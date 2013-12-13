@@ -1292,7 +1292,7 @@ plotNORelease<-function(data,inyears,in2years=NULL,criteria,criteria2=NULL,prefi
 # returns plot of growth of inidvidual tree
 # NEEDS data 
 # RETURNS plot growth and polynom
-plotGrowth<-function(data=NULL,prefix="growth", polynom=4, store=TRUE,storedev=jpeg){
+plotGrowth<-function(data=NULL,prefix="growth", polynom=4, store=TRUE,storedev=jpeg, ...){
   if(is.null(data)){
     return(paste("Data must be specified as argument!"))
   }
@@ -1304,7 +1304,7 @@ plotGrowth<-function(data=NULL,prefix="growth", polynom=4, store=TRUE,storedev=j
     
     treena<-is.na(data[,i])
     mtree<-data[!treena,i]
-    plot(mtree~rownames(data)[!treena],xlab="years",ylab="rings width",type="l" )
+    plot(mtree~rownames(data)[!treena],xlab="years",ylab="rings width",type="l",col="gray", ... )
     mtext(paste(names(data)[i]," ",sep=""), side = 3, line = -1, adj=1)
     fpoly<-lm(mtree~poly(as.numeric(rownames(data)[!treena]),polynom))  
     lines(as.numeric(rownames(data)[!treena]),predict(fpoly),lwd=2 )
