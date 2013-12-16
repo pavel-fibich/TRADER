@@ -9,7 +9,7 @@ R package can be downloadable from http://botanika.prf.jcu.cz/fibich/TRADER_1.0.
 GITHUB
 ======
 
- git clone git://github.com/pavel-fibich/TRADER
- R CMD build TRADER 
+git clone git://github.com/pavel-fibich/TRADER
+R CMD build TRADER 
  >install.packages("TRADER_VERSION.tar.gz",repos=NULL,type="source")
  
