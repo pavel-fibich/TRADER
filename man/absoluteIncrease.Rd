@@ -16,7 +16,7 @@ absoluteIncrease(data, abs = NULL, abs.threshold = NULL, m1 = 10, m2 = 10, buffe
   \item{data}{A data.frame with series as columns and years as rows such as that produced by read.* function of dplR .
 %%     ~~Describe \code{data} here~~
 }
-  \item{abs}{Data frame with absolute increases.
+  \item{abs}{Optional parameter usable for precomputed absolute increases (data frame).
 %%     ~~Describe \code{abs} here~~
 }
   \item{abs.threshold}{Threshold of absolute-increase, see destription.
