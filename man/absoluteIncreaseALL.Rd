@@ -9,7 +9,7 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-absoluteIncreaseALL(data, abs = NULL, m1 = 10, m2 = 10, buffer = 2, prefix = "ai", drawing = TRUE, gfun = mean, length = 2, storedev = jpeg, ...)
+absoluteIncreaseALL(data, abs = NULL, abs.threshold = NULL, m1 = 10, m2 = 10, buffer = 2, prefix = "ai", drawing = TRUE, gfun = mean, length = 2, storedev = jpeg, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -19,6 +19,7 @@ absoluteIncreaseALL(data, abs = NULL, m1 = 10, m2 = 10, buffer = 2, prefix = "ai
   \item{abs}{Optional parameter usable for precomputed absolute increases.
 %%     ~~Describe \code{abs} here~~
 }
+\item{abs.threshold}{Threshold of absolute-increase, see destription.}
   \item{m1}{Determines the number of years to be averaged (including target year) for period prior the potential releas.
 %%     ~~Describe \code{m1} here~~
 }

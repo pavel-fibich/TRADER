@@ -8,14 +8,14 @@
 # NEEDS data
 # OPTIONAL ...
 # RETURNS do figures and tables with prefix
-absoluteIncreaseALL<- function(data,abs=NULL,m1=10,m2=10,buffer=2,prefix="ai",
+absoluteIncreaseALL<- function(data,abs=NULL,abs.threshold=NULL,m1=10,m2=10,buffer=2,prefix="ai",
                                drawing=TRUE,gfun=mean, length=2, storedev=jpeg,...) {
   
   if ( is.null(abs) )
     abs<-absIncrease(data,m1,m2)
-  
-  mabs.threshold<- absTreshold(abs)
-  releases <- absoluteIncrease(data,abs,mabs.threshold,buffer=buffer,gfun=gfun,length=length)
+  if ( is.null(abs.threshold) )
+    abs.threshold<- absTreshold(abs)
+  releases <- absoluteIncrease(data,abs,abs.threshold,buffer=buffer,gfun=gfun,length=length)
   #figures
   if (drawing){
     for(i in 1:length(data)) {      
