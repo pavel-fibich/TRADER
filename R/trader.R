@@ -1248,7 +1248,9 @@ plotNORelease<-function(data,inyears,in2years=NULL,criteria,criteria2=NULL,prefi
   myxlim<-as.numeric( c( names(ab)[1], names(ab)[length(ab)] ))
   
   abtot<-notrees[names(notrees) %in% names(ab)]
-  abdif<-round((ab*100)/abtot,2)
+  abtotADJ<-ifelse(abtot>ab,abtot,ab)
+  abdif<-round((ab*100)/abtotADJ,2)
+  # change solve problem with >100% abdif<-round((ab*100)/abtot,2)
   
   if (store)
     storedev(paste(prefix,"_inyears.",deparse(substitute(storedev)),sep=""))
