@@ -1,9 +1,7 @@
-citHeader("To cite TRADER in publications use:")
-
 citEntry(entry = "Article",
   title        = "{TRADER}: a package for Tree Ring Analysis of Disturbance Events in R",
-  author       = personList(as.person("Altman J."),
-                   as.person("Fibich P."),as.person("Dolezal J."),as.person("Aakala T.")),
+  author       = personList(as.person("Altman Jan"),
+                   as.person("Fibich Pavel"),as.person("Dolezal Jiri"),as.person("Aakala Tuomas")),
   journal      = "Dendrochonologia",
   year         = "2014",
   volume       = "32",
