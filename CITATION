@@ -1,0 +1,19 @@
+citHeader("To cite TRADER in publications use:")
+
+citEntry(entry = "Article",
+  title        = "{TRADER}: a package for Tree Ring Analysis of Disturbance Events in R",
+  author       = personList(as.person("Altman J."),
+                   as.person("Fibich P."),as.person("Dolezal J."),as.person("Aakala T.")),
+  journal      = "Dendrochonologia",
+  year         = "2014",
+  volume       = "32",
+  number       = "2",
+  pages        = "107--112",
+  url          = "http://www.sciencedirect.com/science/article/pii/S1125786514000058",
+
+  textVersion  =
+  paste("Altman J, Fibich P, Dolezal J & Aakala T (2014).",
+        "TRADER: a package for Tree Ring Analysis of Disturbance Events in R.",
+        "Dendrochonologia 32: 107-112, ",
+        "URL http://www.sciencedirect.com/science/article/pii/S1125786514000058 .")
+)
