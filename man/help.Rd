@@ -6,6 +6,7 @@
 \alias{priorGrowth}
 \alias{absIncrease}
 \alias{writeReleaseStats}
+\alias{removeMajorFromModerate}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Help functions.
 %%  ~~function to do ... ~~
@@ -20,6 +21,7 @@ PGCreleases(change, criteria = 0.2)
 PGCreleasesSplechtna(change, criteria = 0.5)
 priorGrowth(data, m1 = 10, m2 = 10, gfun = mean)
 writeReleaseStats(release_list, mytext)
+removeMajorFromModerate(mod,maj,zero,on)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -44,6 +46,10 @@ writeReleaseStats(release_list, mytext)
 \item{release_list}{List of releases per tree.
 %%     ~~Describe \code{criteria} here~~
 }
+\item{mod}{List of moderate releases per tree.}
+\item{mod}{List of major releases per tree.}
+\item{zero}{Value for the beginning of the list.}
+\item{on}{List of growth changes per tree.}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
