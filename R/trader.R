@@ -150,10 +150,10 @@ doAll<- function(data,m1=10,m2=10, boundary=NULL, buffer=2,
                        ,segment2=segment2,notop=notop,notop2=notop2,storedev=storedev)
   
   if (drawing) {
-    for(i in 1:length(data)) {
+    for(i in 1:length(data)) {      
       storedev(paste(prefix,"_",gsub("/","_",names(data)[i]),".",deparse(substitute(storedev)),sep=""))
-      par(mfrow=c(2,2))
-      plotRelease(data,abs,releasesFW, i, method="FraverWhite",addHLines=c(mabs.threshold),...)
+      par(mfrow=c(2,2))      
+      plotRelease(data,abs,releasesFW, i, method="FraverWhite",addHLines=c(abs.threshold),...)
       plotRelease(data,releasesNA$change,releasesNA, i, method="NowackiAbrams",
                    addHLines=c(criteria+0.05,criteria2),plotfirst=FALSE,...)
       plotRelease(data,releasesBA$change,releasesBA, i, method="BlackAbrams",
