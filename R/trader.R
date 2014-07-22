@@ -20,7 +20,7 @@ absoluteIncreaseALL<- function(data,abs=NULL,abs.threshold=NULL,m1=10,m2=10,buff
   if (drawing){
     for(i in 1:length(data)) {      
       storedev(paste(prefix,"_",gsub("/","_",names(data)[i]),".",deparse(substitute(storedev)),sep=""),pointsize = 10)
-      plotRelease(data,abs,releases, i, method="FraverWhite",addHLines=c(mabs.threshold),...)
+      plotRelease(data,abs,releases, i, method="FraverWhite",addHLines=c(abs.threshold),...)
       dev.off()
     }
   }
@@ -335,6 +335,13 @@ noblabrams<-function(data=NULL,prior=NULL,change=NULL,m1=10,m2=10,boundary=NULL,
     #Count releases that fill the criteria given at the setup
     releases3 <- PGCreleases(scaled,criteria)
     
+    releases3All <- scaled
+    releases3AllInc <- releases3All >= criteria
+    for(t in 2:length(releases3All)){ #loop across series
+      releases3All[,t]<- releases3AllInc[,t]*releases3All[,t]
+      releases3All[,t]<- ifelse(releases3All[,t]==0, NA,releases3All[,t])
+    }
+    
     #all releases above threshold    
     releases3All2 <- scaled
     releases3AllInc <- releases3All2 >= criteria2
@@ -342,16 +349,18 @@ noblabrams<-function(data=NULL,prior=NULL,change=NULL,m1=10,m2=10,boundary=NULL,
       releases3All2[,t]<- releases3AllInc[,t]*releases3All2[,t]
       releases3All2[,t]<- ifelse(releases3All2[,t]==0, NA,releases3All2[,t])
     }
-    releases3All <- scaled
-    releases3AllInc <- releases3All >= criteria
-    for(t in 2:length(releases3All)){ #loop across series
-      releases3All[,t]<- releases3AllInc[,t]*releases3All[,t]
-      releases3All[,t]<- ifelse(releases3All[,t]==0, NA,releases3All[,t])
-    }
+    
     rm(releases3AllInc,t)
   } else {
     #Count releases that fill the criteria given at the setup
     releases3 <- PGCreleases(change,criteria)
+    
+    releases3All <- change
+    releases3AllInc <- releases3All >= criteria    
+    for(t in 2:length(releases3All)){ #loop across series
+      releases3All[,t]<- releases3AllInc[,t]*releases3All[,t]
+      releases3All[,t]<- ifelse(releases3All[,t]==0, NA,releases3All[,t])
+    }    
     
     releases3All2 <- change
     releases3AllInc <- releases3All2 >= criteria2
@@ -359,12 +368,7 @@ noblabrams<-function(data=NULL,prior=NULL,change=NULL,m1=10,m2=10,boundary=NULL,
       releases3All2[,t]<- releases3AllInc[,t]*releases3All2[,t]
       releases3All2[,t]<- ifelse(releases3All2[,t]==0, NA,releases3All2[,t])
     }    
-    releases3All <- change
-    releases3AllInc <- releases3All >= criteria    
-    for(t in 2:length(releases3All)){ #loop across series
-      releases3All[,t]<- releases3AllInc[,t]*releases3All[,t]
-      releases3All[,t]<- ifelse(releases3All[,t]==0, NA,releases3All[,t])
-    }    
+    
     rm(releases3AllInc,t)
   }
   
@@ -376,7 +380,9 @@ noblabrams<-function(data=NULL,prior=NULL,change=NULL,m1=10,m2=10,boundary=NULL,
   release_list32 <- reduceByLB(releases=releases3,above=releases3All2,
                               buffer=buffer,length=length,type=1)
   
+  
   # remove major relese from the moderate
+  all_release_list3 <- release_list3
   release_list3<-removeMajorFromModerate(release_list3,release_list32,0)  
   
   #List percent growth changes to separate moderate and major releases
@@ -386,6 +392,7 @@ noblabrams<-function(data=NULL,prior=NULL,change=NULL,m1=10,m2=10,boundary=NULL,
                                       buffer=buffer,length=length,type=2)
   
   # remove major relese from the moderate
+  all_release_list3_pgc <- release_list3_pgc
   release_list3_pgc<-removeMajorFromModerate(release_list3,release_list32,0.0,
                                              release_list3_pgc)  
   
@@ -403,16 +410,16 @@ noblabrams<-function(data=NULL,prior=NULL,change=NULL,m1=10,m2=10,boundary=NULL,
   
   release_list_vals <- releases3
   for ( t in 2:length(releases3) ){
-    release_list_vals[,t]<-ifelse(release_list_vals[,1] %in% release_list3[[t-1]],
+    release_list_vals[,t]<-ifelse(release_list_vals[,1] %in% all_release_list3[[t-1]],
                                   release_list_vals[,t],NA)
   }
   
   if ( black )
-    return ( list("releases" = releases3,"years"=release_list3, "change" = scaled ,
+    return ( list("releases" = releases3,"years"=all_release_list3, "change" = scaled ,
                   "pgc"=release_list_vals,"years_list_total" =norel,
                   "all_releases"=releases3All) )
   else
-    return ( list("releases" = releases3,"years"=release_list3, "change" = change ,
+    return ( list("releases" = releases3,"years"=all_release_list3, "change" = change ,
                   "pgc"=release_list_vals,"years_list_total" =norel,
                   "all_releases"=releases3All) )
 }
@@ -529,6 +536,7 @@ splechtna<-function(data,change=NULL,prior=NULL,m1=10,m2=10,boundary=NULL,buffer
   }
 
   # remove major relese from the moderate
+  all_release_list4 <- release_list4
   release_list4<-removeMajorFromModerate(release_list4,release_list42,0)    
   
   rs<-writeReleaseStats(release_list4,paste("Total number of releases >=",criteria,
@@ -542,11 +550,11 @@ splechtna<-function(data,change=NULL,prior=NULL,m1=10,m2=10,boundary=NULL,buffer
   
   release_list_vals <- change
   for ( t in 2:length(change) ){
-    release_list_vals[,t]<-ifelse(release_list_vals[,1] %in% release_list4[[t-1]],
+    release_list_vals[,t]<-ifelse(release_list_vals[,1] %in% all_release_list4[[t-1]],
                                   release_list_vals[,t],NA)
   }
   
-  return ( list("releases" = change,"years"=release_list4, "change" = scaled ,
+  return ( list("releases" = change,"years"=all_release_list4, "change" = scaled ,
                 "pgc"=release_list_vals,"years_list_total" =norel,
                 "all_releases"=releases3All) 
     )
