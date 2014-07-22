@@ -137,8 +137,8 @@ doAll<- function(data,m1=10,m2=10, boundary=NULL, buffer=2,
                  segment2=0.5,gfun=mean,length=2, notop=10,notop2=10,storedev=jpeg,...) {
   
   abs<-absIncrease(data,m1,m2)
-  mabs.threshold<- absTreshold(abs)
-  releasesFW <- absoluteIncrease(data,abs,mabs.threshold,m1=m1,m2=m2,buffer=buffer,gfun=gfun,
+  abs.threshold<- absTreshold(abs)
+  releasesFW <- absoluteIncrease(data,abs,abs.threshold,m1=m1,m2=m2,buffer=buffer,gfun=gfun,
                                  length=length)
   releasesNA<-noblabrams(data,m1=m1,m2=m2,buffer=buffer,criteria=criteria,
                         criteria2=criteria2,black=FALSE,gfun=gfun,length=length)
@@ -1286,8 +1286,9 @@ plotNORelease<-function(data,inyears,in2years=NULL,criteria,criteria2=NULL,prefi
     ab<-table( c(inyears, in2years) )
     btot<-notrees[names(notrees) %in% names(b)]
     bdif<-round((b*100)/btot,2)    
-  } else
+  } else {
     ab<-a
+  }
   
   myxlim<-as.numeric( c( names(ab)[1], names(ab)[length(ab)] ))
   
