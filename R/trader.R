@@ -700,7 +700,7 @@ PGCreleasesSplechtna <- function(change,criteria=0.5){
 # NEEDS releases
 # OPTIONAL buffer, length
 # RETURNS release_list
-writeReleaseStats<-function(releases, above, buffer=2, type=1, length=2,val=NULL){
+reduceByLB<-function(releases, above, buffer=2, type=1, length=2,val=NULL){
   #releases=releases1;above=releases1All; buffer=2
   #releases=releases3;above=releases3All
   
