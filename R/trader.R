@@ -140,7 +140,7 @@ doAll<- function(data,m1=10,m2=10, boundary=NULL, buffer=2,
   abs.threshold<- absTreshold(abs)
   releasesFW <- absoluteIncrease(data,abs,abs.threshold,m1=m1,m2=m2,buffer=buffer,gfun=gfun,
                                  length=length)
-  releasesNA<-noblabrams(data,m1=m1,m2=m2,buffer=buffer,criteria=criteria,
+  releasesNA<-noblabrams(data,m1=m1,m2=m2,buffer=buffer,criteria=criteria+0.05,
                         criteria2=criteria2,black=FALSE,gfun=gfun,length=length)
   releasesBA<-noblabrams(data,m1=m1,m2=m2,boundary=boundary,buffer=buffer,criteria=criteria,
                         criteria2=criteria2,segment=segment,black=TRUE,gfun=gfun,length=length
