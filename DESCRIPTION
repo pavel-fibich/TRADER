@@ -1,7 +1,7 @@
 Package: TRADER
 Type: Package
 Title: Tree Ring Analysis of Disturbance Events in R
-Version: 1.0.3
+Version: 1.0.4
 Date: 2014-07-23
 Author: Pavel Fibich <pavel.fibich@prf.jcu.cz>, Jan Altman <altman.jan@gmail.com>, Tuomas Aakala <tuomas.aakala@helsinki.fi>, Jiri Dolezal <jiriddolezal@gmail.com>
 Maintainer: Pavel Fibich <pavel.fibich@prf.jcu.cz>

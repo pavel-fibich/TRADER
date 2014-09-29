@@ -939,7 +939,9 @@ boundaryFit<- function(boundaries,x,y,boundary=NULL,prefix="bo",store=TRUE,
                        storedev=pdf,initNLS=NULL){
   #x<-bo$x;y<-bo$y;boundaries<-bo$bo; store=FALSE
   
-  boundaries <- boundaries[1:(which(boundaries$tops <0)[1]-1),]
+  doto<-which(boundaries$tops <0)[1]
+  doto<-ifelse(is.na(doto),dim(boundaries)[1],doto)
+  boundaries <- boundaries[1:(doto-1),]
   #boundaries$tops <- ifelse( boundaries$tops>0,boundaries$tops,0) 
   
   flm<-lm(tops~segments,data=boundaries)
@@ -1248,17 +1250,23 @@ plotBoundary<- function(boundaries,x,y,boundary,rsq=NULL,prefix="bo",criteria=0.
   plot(x, y, xlab = "prior growth [mm]", ylab = "growth change [%]", type='n')
   #points(boundaries$segments, boundaries$tops*100,col="darkblue",pch=15)
   all<-boundary(x)*100
-  tochoose<-(all*criteria > y) | (x>boundaries$segments[which(boundaries$tops <0)[1]] )
+  
+  # draw up to negative or the last value
+  doto<-which(boundaries$tops <0)[1]
+  doto<-ifelse(is.na(doto),dim(boundaries)[1],doto)
+  
+  tochoose<-(all*criteria > y) | (x>boundaries$segments[doto] )
   points(x[tochoose],y[tochoose],pch = 4, col = "gray75",)
-  tochoose<-all <= y & (x<=boundaries$segments[which(boundaries$tops <0)[1]] )
+  tochoose<-all <= y & (x<=boundaries$segments[doto] )
   points(x[tochoose],y[tochoose],pch = 20, col = "darkblue",)
-  tochoose<-(all*criteria2 <= y) & (all > y) & (x<=boundaries$segments[which(boundaries$tops <0)[1]])
+  tochoose<-(all*criteria2 <= y) & (all > y) & (x<=boundaries$segments[doto])
   points(x[tochoose],y[tochoose],pch = 20, col = "darkblue")
   tochoose<-(all*criteria <= y) & (all*criteria2 > y)
   points(x[tochoose],y[tochoose],pch = 4, col = "black",)
   
   abline(h=0,lty="dashed")
-  toline<-seq(from=0.01,to=boundaries$segments[which(boundaries$tops <0)[1]],length=50)
+  
+  toline<-seq(from=0.01,to=boundaries$segments[doto],length=50)
   lines(toline,boundary(toline)*100,col="red")
   lines(toline,boundary(toline)*(criteria2*100),col="blue")
   lines(toline,boundary(toline)*(criteria*100),col="green")
