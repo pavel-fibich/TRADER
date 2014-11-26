@@ -944,14 +944,21 @@ boundaryFit<- function(boundaries,x,y,boundary=NULL,prefix="bo",store=TRUE,
   boundaries <- boundaries[1:(doto-1),]
   #boundaries$tops <- ifelse( boundaries$tops>0,boundaries$tops,0) 
   
-  flm<-lm(tops~segments,data=boundaries)
+  flm<-lm(tops~segments,data=boundaries)  
+  print("--Summary of y=a+bx fit.")
+  print(summary(flm))  
   fpoly<-lm(tops~segments+I(segments^2),data=boundaries)
+  print("--Summary of y=a+bx+cx^2 fit.")
+  print(summary(fpoly))  
   fr2<-c(summary(flm)$r.squared,summary(fpoly)$r.squared) 
   
   TSS<-sum((boundaries$tops-mean(boundaries$tops))^2)
   
-  if (is.null(initNLS)){ mya<-5; myb<--1} 
-  else { mya<- initNLS$a; myb<- initNLS$b }
+  if (is.null(initNLS)){ 
+    mya<-5; myb<--1
+    } else { 
+      mya<- initNLS$a; myb<- initNLS$b 
+    }
   
   fr2inc<-length(fr2)
   tryCatch(
@@ -959,16 +966,24 @@ boundaryFit<- function(boundaries,x,y,boundary=NULL,prefix="bo",store=TRUE,
     fr2<-c(fr2,1-(deviance(fexp0)/TSS))}
   , error=function(e) print(paste("y=ae^bx","nls error:", e$message)))
   if (fr2inc == length(fr2) ) {fr2<-c(fr2,0);fexp0<-lm(boundaries$tops~1)}
+  else{
+    print("--Summary of y=ae^bx fit.")
+    print(summary(fexp0))
+  }
   
   if (is.null(initNLS)){ mya<-3; myb<--1; myc<-5} 
   else { mya<- initNLS$a; myb<- initNLS$b; myc<- initNLS$c;  }
   
   fr2inc<-length(fr2)
   tryCatch(
-  {fexp1<-nls(tops~c+a*exp(b*segments),data=boundaries,start=list(a=mya,b=myb,c=myc));
-   fr2<-c(fr2,1-(deviance(fexp1)/TSS)) }
+    {fexp1<-nls(tops~c+a*exp(b*segments),data=boundaries,start=list(a=mya,b=myb,c=myc));
+    fr2<-c(fr2,1-(deviance(fexp1)/TSS)) }
   , error=function(e) print(paste("y=c+ae^bx","nls error:",e$message)))
   if (fr2inc == length(fr2) ) {fr2<-c(fr2,0);fexp1<-lm(boundaries$tops~1)}
+  else{
+    print("--Summary of y=c+ae^bx fit.")
+    print(summary(fexp1))
+  }
   
   if (is.null(initNLS)){ mya<-10; myb<--3; myc<-5; myd<--2} 
   else { mya<- initNLS$a; myb<- initNLS$b; myc<-initNLS$c;  myd<-initNLS$d; }
@@ -979,6 +994,10 @@ boundaryFit<- function(boundaries,x,y,boundary=NULL,prefix="bo",store=TRUE,
      fr2<-c(fr2,1-(deviance(fexp2)/TSS)) }
   , error=function(e) print(paste("y=c+dx+ae^bx","nls error:",e$message)))
   if (fr2inc == length(fr2) ) {fr2<-c(fr2,0);fexp2<-lm(boundaries$tops~1)}
+  else{
+    print("--Summary of y=c+dx+ae^bx fit.")
+    print(summary(fexp2))
+  }
   
   if (is.null(initNLS)){ mya<-2; myb<--1; myc<-20; myd<--3} 
   else { mya<- initNLS$a; myb<- initNLS$b; myc<-initNLS$c;  myd<-initNLS$d; }
@@ -989,7 +1008,11 @@ boundaryFit<- function(boundaries,x,y,boundary=NULL,prefix="bo",store=TRUE,
     fr2<-c(fr2,1-(deviance(fexp3)/TSS)) }
   , error=function(e) print(paste("y=ae^bx+ce^dx","nls error:",e$message)))
   if (fr2inc == length(fr2) ) {fr2<-c(fr2,0);fexp3<-lm(boundaries$tops~1)}
-
+  else{
+    print("--Summary of y=ae^bx+ce^dx fit.")
+    print(summary(fexp3))
+  }
+  
   if (is.null(initNLS)){ mya<-10; myb<--2} 
   else { mya<- initNLS$a; myb<- initNLS$b }
   
@@ -1002,8 +1025,14 @@ boundaryFit<- function(boundaries,x,y,boundary=NULL,prefix="bo",store=TRUE,
     fr2<-c(fr2,1-(deviance(flog0)/TSS)) }
   , error=function(e) print(paste("y=a+blog(x)","nls error:",e$message)))
   if (fr2inc == length(fr2) ) {fr2<-c(fr2,0);flog0<-lm(boundaries$tops~1)}
+  else{
+    print("--Summary of y=a+blog(x) fit.")
+    print(summary(flog0))
+  }
   
   flog1<-lm(tops~segments+log(segments)+segments:log(segments),data=boundaries)
+  print("--Summary of y=a+bx+clog(x)+dxlog(x) fit.")
+  print(summary(flog1))  
   fr2<-c(fr2,summary(flog1)$r.squared)
   
   # which R2 is max
