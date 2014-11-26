@@ -19,4 +19,4 @@ GITHUB
  
  eg.
 
-  >install.packages("TRADER_1.0.5.tar.gz",repos=NULL,type="source")
+ >install.packages("TRADER_1.0.5.tar.gz",repos=NULL,type="source")
