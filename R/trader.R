@@ -933,7 +933,7 @@ boundaryGet<-function(data,prior=NULL,change=NULL,m1=10,m2=10,segment=0.5,segmen
 ##########################################################################################
 # returns boundary function or test given one
 # NEEDS boundaries
-# RETURNS boundary line as function
+# RETURNS boundary line as function, rsq and the best model
 # morefun determines usage of more fitting function
 boundaryFit<- function(boundaries,x,y,boundary=NULL,prefix="bo",store=TRUE,
                        storedev=pdf,initNLS=NULL){
@@ -1039,41 +1039,48 @@ boundaryFit<- function(boundaries,x,y,boundary=NULL,prefix="bo",store=TRUE,
   imax<-which.max(fr2)
   
   print(paste("The fitted boundary line summary!"))
+  bbestmodel<-c()
   
   if (imax == 1) { #lm
     bline<-function(x) { pmax( as.numeric(flm$coefficients[1]) + 
                            as.numeric(flm$coefficients[2])*x,0) }
     print(paste("Linear model y=a+bx was the best!"))
     print(summary(flm))
+    bbestmodel<-flm
   } else if (imax == 2) { #poly
     bline<-function(x) { pmax(as.numeric(fpoly$coefficients[1]) + 
                                 as.numeric(fpoly$coefficients[2])*x +
                                 as.numeric(fpoly$coefficients[3])*x*x,0) }
     print(paste("Polynomial model y=a+bx+cx^2 was the best!"))
     print(summary(fpoly))
+    bbestmodel<-fpoly
   } else if (imax == 3) { #exp0  
     mys<-summary(fexp0)
     bline<-function(x) { pmax(mys$coefficients[1,1]*exp(mys$coefficients[2,1]*x),0) } 
     print(paste("Exponential model y=ae^bx was the best!"))
     print(mys)  
+    bbestmodel<-fexp0
   } else if (imax == 4) { #exp1
     mys<-summary(fexp1)  
     bline<-function(x) { pmax(mys$coefficients[1,1]*exp(mys$coefficients[2,1]*x)
                               +mys$coefficients[3,1],0) }     
     print(paste("Exponential model y=c+ae^bx was the best!"))
     print(mys)
+    bbestmodel<-fexp1
   } else if (imax == 5) {  #exp2
     mys<-summary(fexp2)  
     bline<-function(x) { pmax(mys$coefficients[1,1]*exp(mys$coefficients[2,1]*x)+
                                 mys$coefficients[3,1]+ mys$coefficients[4,1]*x,0) }     
     print(paste("Exponential model y=c+dx+ae^bx was the best!"))
     print(mys)
+    bbestmodel<-fexp2
   } else if (imax == 6) { # exp3
     mys<-summary(fexp3)  
     bline<-function(x) { pmax(mys$coefficients[1,1]*exp(mys$coefficients[2,1]*x)+
                                 mys$coefficients[3,1]*exp(mys$coefficients[4,1]*x),0) }     
     print(paste("Exponential model y=ae^bx+ce^dx was the best!"))
     print(mys)
+    bbestmodel<-fexp3
   } else if (imax == 7) { # exp4
     bline<-function(x) { pmax(as.numeric(fexp4$coefficients[1]) + 
                                 as.numeric(fexp4$coefficients[2])*x +
@@ -1081,11 +1088,13 @@ boundaryFit<- function(boundaries,x,y,boundary=NULL,prefix="bo",store=TRUE,
                                 as.numeric(fexp4$coefficients[4])*log(x)*x,0) }
     print(paste("Logarithmic model y=a+bx+ce^x+dxe^x was the best!"))
     print(summary(fexp4))
+    bbestmodel<-fexp4
   } else if (imax == 8) {# log0
     mys<-summary(flog0)  
     bline<-function(x) { pmax(mys$coefficients[1,1]+mys$coefficients[2,1]*log(x),0) }     
     print(paste("Logaritmic model y=c+ae^bx was the best!"))
     print(mys)
+    bbestmodel<-flog0
   } else if (imax ==9) { #log1
     bline<-function(x) { pmax(as.numeric(flog1$coefficients[1]) + 
                                 as.numeric(flog1$coefficients[2])*x +
@@ -1093,6 +1102,7 @@ boundaryFit<- function(boundaries,x,y,boundary=NULL,prefix="bo",store=TRUE,
                                 as.numeric(flog1$coefficients[4])*log(x)*x,0) }
     print(paste("Logarithmic model y=a+bx+clog(x)+dxlog(x) was the best!"))
     print(summary(flog1))
+    bbestmodel<-flog1
   }
   
   
@@ -1131,7 +1141,7 @@ boundaryFit<- function(boundaries,x,y,boundary=NULL,prefix="bo",store=TRUE,
                                      round(fr2,3)),lty=rep(1,length(mycol)),col=mycol)
     dev.off()
   } 
-  return(list("fun" = bline, "rsq" = fr2[imax]))
+  return(list("fun" = bline, "rsq" = fr2[imax], "bestModel" = bbestmodel))
 }
 
 

@@ -45,6 +45,7 @@ boundaryFit(boundaries, x, y, boundary = NULL, prefix = "bo", store = TRUE, stor
 %%  If it is a LIST, use
 \item{fun}{Fitted function (boundary line).}
 \item{rsq}{R square of the fit.}
+\item{bestModel}{Best fitted model.}
 %% ...
 }
 \references{
