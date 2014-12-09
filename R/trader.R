@@ -43,7 +43,7 @@ growthAveragingALL<- function(data,releases=NULL,m1=10,m2=10, buffer=2, drawing=
                               length=2, storedev=jpeg, ...) {
   if ( is.null(releases) )
     releases<-noblabrams(data,m1=m1,m2=m2,buffer=buffer,length=length,
-                        criteria=criteria,criteria2=0.5,black=FALSE,gfun=gfun)
+                        criteria=criteria,criteria2=criteria2,black=FALSE,gfun=gfun)
   
   #figures
   if (drawing){
