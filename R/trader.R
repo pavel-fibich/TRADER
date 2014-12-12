@@ -60,6 +60,8 @@ growthAveragingALL<- function(data,releases=NULL,m1=10,m2=10, buffer=2, drawing=
   write.table ( releases$all_releases, paste(prefix,"_releases_all.csv", sep = ""), sep="\t",row.names=F)
   write.table ( releases$years_list_total, paste(prefix,"_releases_years_total.csv", sep = ""), row.names=F,sep="\t")
   write.table ( releases$pgc, paste(prefix,"_releases_values_total.csv", sep = ""), row.names=F,sep="\t")
+  write.table ( releases$onlyMajor, paste(prefix,"_releases_Only_Major.csv", sep = ""), row.names=F,sep="\t")
+  write.table ( releases$onlyModerate, paste(prefix,"_releases_Only_Moderate.csv", sep = ""), row.names=F,sep="\t")
   #return(releases)
 }
 
@@ -93,6 +95,8 @@ boundaryLineALL<- function(data,releases=NULL,m1=10,m2=10, boundary=NULL, buffer
   write.table ( releases$all_releases, paste(prefix,"_releases_all.csv", sep = ""), sep="\t",row.names=F)
   write.table ( releases$years_list_total, paste(prefix,"_releases_years_total.csv", sep = ""), row.names=F,sep="\t")
   write.table ( releases$pgc, paste(prefix,"_releases_values_total.csv", sep = ""), row.names=F,sep="\t")
+  write.table ( releases$onlyMajor, paste(prefix,"_releases_Only_Major.csv", sep = ""), row.names=F,sep="\t")
+  write.table ( releases$onlyModerate, paste(prefix,"_releases_Only_Moderate.csv", sep = ""), row.names=F,sep="\t")
   #return(releases)
 }
 
@@ -124,6 +128,8 @@ splechtnaALL<- function(data, releases=NULL,m1=10,m2=10, boundary=NULL, buffer=2
   write.table ( releases$all_releases, paste(prefix,"_releases_all.csv", sep = ""), sep="\t",row.names=F)
   write.table ( releases$years_list_total, paste(prefix,"_releases_years_total.csv", sep = ""), row.names=F,sep="\t")
   write.table ( releases$pgc, paste(prefix,"_releases_values_total.csv", sep = ""), row.names=F,sep="\t")
+  write.table ( releases$onlyMajor, paste(prefix,"_releases_Only_Major.csv", sep = ""), row.names=F,sep="\t")
+  write.table ( releases$onlyModerate, paste(prefix,"_releases_Only_Moderate.csv", sep = ""), row.names=F,sep="\t")
   #return(releases)
 }
 
@@ -179,6 +185,8 @@ doAll<- function(data,m1=10,m2=10, boundary=NULL, buffer=2,
                 row.names=F,sep="\t")
   write.table ( releasesNA$pgc, paste(prefix,"_releases_values_total.csv", sep = ""), 
                 row.names=F,sep="\t")
+  write.table ( releasesNA$onlyMajor, paste(prefix,"_releases_Only_Major.csv", sep = ""), row.names=F,sep="\t")
+  write.table ( releasesNA$onlyModerate, paste(prefix,"_releases_Only_Moderate.csv", sep = ""), row.names=F,sep="\t")
   prefix<-"bl"
   write.table ( releasesBA$change, paste(prefix,"_change.csv", sep = ""), sep="\t",row.names=F)
   #write.table ( releasesBA$releases, paste(prefix,"_releases_tops.csv", sep = ""), sep="\t",row.names=F)
@@ -187,6 +195,8 @@ doAll<- function(data,m1=10,m2=10, boundary=NULL, buffer=2,
                 row.names=F,sep="\t")
   write.table ( releasesBA$pgc, paste(prefix,"_releases_values_total.csv", sep = ""), 
                 row.names=F,sep="\t")
+  write.table ( releasesBA$onlyMajor, paste(prefix,"_releases_Only_Major.csv", sep = ""), row.names=F,sep="\t")
+  write.table ( releasesBA$onlyModerate, paste(prefix,"_releases_Only_Moderate.csv", sep = ""), row.names=F,sep="\t")
   prefix<-"sp"
   write.table ( releasesS$change, paste(prefix,"_change.csv", sep = ""), sep="\t",row.names=F)
   #write.table ( releasesS$releases, paste(prefix,"_releases_tops.csv", sep = ""), sep="\t",row.names=F)  
@@ -195,6 +205,8 @@ doAll<- function(data,m1=10,m2=10, boundary=NULL, buffer=2,
                 row.names=F,sep="\t")
   write.table ( releasesS$pgc, paste(prefix,"_releases_values_total.csv", sep = ""), 
                 row.names=F,sep="\t")
+  write.table ( releasesS$onlyMajor, paste(prefix,"_releases_Only_Major.csv", sep = ""), row.names=F,sep="\t")
+  write.table ( releasesS$onlyModerate, paste(prefix,"_releases_Only_Moderate.csv", sep = ""), row.names=F,sep="\t")
 }
 
 ##########################################################################################
@@ -417,11 +429,17 @@ noblabrams<-function(data=NULL,prior=NULL,change=NULL,m1=10,m2=10,boundary=NULL,
   if ( black )
     return ( list("releases" = releases3,"years"=all_release_list3, "change" = scaled ,
                   "pgc"=release_list_vals,"years_list_total" =norel,
-                  "all_releases"=releases3All) )
+                  "all_releases"=releases3All,
+                  "onlyModerate"=relListToDataFrame(release_list3,data),
+                  "onlyMajor"=relListToDataFrame(release_list32,data) 
+                  ) )
   else
     return ( list("releases" = releases3,"years"=all_release_list3, "change" = change ,
                   "pgc"=release_list_vals,"years_list_total" =norel,
-                  "all_releases"=releases3All) )
+                  "all_releases"=releases3All,
+                  "onlyModerate"=relListToDataFrame(release_list3,data),
+                  "onlyMajor"=relListToDataFrame(release_list32,data) 
+                  ) )
 }
 
 ##########################################################################################
@@ -556,7 +574,9 @@ splechtna<-function(data,change=NULL,prior=NULL,m1=10,m2=10,boundary=NULL,buffer
   
   return ( list("releases" = change,"years"=all_release_list4, "change" = scaled ,
                 "pgc"=release_list_vals,"years_list_total" =norel,
-                "all_releases"=releases3All) 
+                "all_releases"=releases3All,
+                "onlyModerate"=relListToDataFrame(release_list4,data),
+                "onlyMajor"=relListToDataFrame(release_list42,data) ) 
     )
 }
 
@@ -1155,6 +1175,22 @@ writeReleaseStats<-function(release_list,mytext){
   print(table(inyears))
   return(inyears)
 }
+
+
+##########################################################################################
+# Tranform list of releases in data frame
+relListToDataFrame<-function(release_list,data){
+  relDF<-data
+  relDF[!is.na(relDF)]<-0
+  for(i in 1:length(release_list) ) { # i<-1
+    tlist<-release_list[[i]]
+    tlist<-tlist[-c(1)]
+    relDF[,i]<-ifelse( (rownames(relDF) %in% tlist) & (relDF[,i] == 0 ), 1, NA )
+  }  
+  return(relDF)
+}
+
+
 
 ##########################################################################################
 
