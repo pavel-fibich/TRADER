@@ -68,7 +68,7 @@ doAll(data, m1 = 10, m2 = 10, boundary = NULL, buffer = 2,
 }
 }
 \details{
-For details look at methods that are evaluated: \code{\link{absoluteIncrease}}, \code{\link{abrams}} and \code{\link{splechtna}}.
+For details look at methods that are evaluated: \code{\link{absoluteIncrease}}, \code{\link{noblabrams}} and \code{\link{splechtna}}.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{Write many tables and figures in the current directory.
