@@ -8,7 +8,12 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-plotRelease(data, abs, rel, treeno = 1, method = "FraverWhite", type = "l", xlab = NULL, ylab = NULL, main = NULL, col = c("black", "lightblue"), addHLinesCol = c("olivedrab", "red", "darkblue"), addHLines = c(NULL, NULL, NULL), addHLinesText = c("", "", ""), smallcex = 0.85, plotfirst = TRUE, plotpoints = FALSE, ...)
+plotRelease(data, abs, rel, treeno = 1, method = "FraverWhite", 
+  type = "l", xlab = NULL, ylab = NULL, main = NULL, 
+  col = c("black", "lightblue"), 
+  addHLinesCol = c("olivedrab", "red", "darkblue"), 
+  addHLines = c(NULL, NULL, NULL), addHLinesText = c("", "", ""), 
+  smallcex = 0.85, plotfirst = TRUE, plotpoints = FALSE, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

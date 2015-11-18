@@ -97,7 +97,7 @@ Splechtna, B.E., Gratzer, G. & Black, B.A. 2005. Disturbance history of a Europe
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-\seealso{ \code{\link{absoluteIncreaseAll}},
+\seealso{ \code{\link{absoluteIncreaseALL}},
 \code{\link{growthAveragingALL}},
 \code{\link{boundaryLineALL}},
 \code{\link{splechtnaALL}}

@@ -8,7 +8,8 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-plotGrowth(data = NULL, prefix = "growth", polynom = 4, store = TRUE, storedev = jpeg, ...)
+plotGrowth(data = NULL, prefix = "growth", polynom = 4, 
+  store = TRUE, storedev = jpeg, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -27,6 +28,7 @@ plotGrowth(data = NULL, prefix = "growth", polynom = 4, store = TRUE, storedev =
   \item{storedev}{Format for saving the graphical outputs, eg. pdf or jpeg.
 %%     ~~Describe \code{storedev} here~~
 }
+  \item{...}{Arguments passed to plot function.}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
