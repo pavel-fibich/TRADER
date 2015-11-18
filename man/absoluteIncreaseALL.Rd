@@ -1,5 +1,5 @@
 \name{absoluteIncreaseALL}
-\alias{absoluteIncreaseAll}
+\alias{absoluteIncreaseALL}
 
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Overal function for Fraver & White 2005 method called "absolute increase"

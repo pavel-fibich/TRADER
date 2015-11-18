@@ -1,5 +1,5 @@
 \name{boundaryLineALL}
-\alias{boundaryLineAll}
+\alias{boundaryLineALL}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Overal function for Black and Abrams 2003 method or "pure boundary line".
 %%  ~~function to do ... ~~

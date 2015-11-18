@@ -74,7 +74,7 @@ boundaryGet(data, prior = NULL, change = NULL, m1 = 10, m2 = 10, segment = 0.5, 
 }
 \examples{
 data(relData)
-bo<-boundaryGet(relData)
+bo<-boundaryGet(relData1)
 plot(bo)
 plotBoundary(bo$bo,bo$x,bo$y,boundary=function(x) {5.0067*exp(-0.664*x)})
 }

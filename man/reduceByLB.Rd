@@ -60,7 +60,7 @@ reduceByLB(releases, above, buffer = 2, type = 1, length = 2, val = NULL)
 data(relData)
 rna<-noblabrams(relData1,black=FALSE) # for Nowacki and Abrams 1997
 
-reduceByLB(rna$all_releases)
+reduceByLB(rna$releases,rna$all_releases)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

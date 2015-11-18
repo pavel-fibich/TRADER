@@ -1,5 +1,5 @@
 \name{growthAveragingALL}
-\alias{growthAveragingAll}
+\alias{growthAveragingALL}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Overal function for Nowacki and Abrams 1997 method.
 %%  ~~function to do ... ~~

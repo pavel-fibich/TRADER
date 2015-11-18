@@ -90,7 +90,7 @@ splechtna(data, change = NULL, prior = NULL, m1 = 10, m2 = 10, boundary = NULL, 
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-data(relData1)
+data(relData)
 rel<-splechtna(relData1)
 plotRelease(relData1,rel$change,rel,1,method="Splechtna")
 }

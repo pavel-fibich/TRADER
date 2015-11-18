@@ -1,5 +1,5 @@
 \name{splechtnaALL}
-\alias{splechtnaAll}
+\alias{splechtnaALL}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Overal function for Splechtna et al. 2005 type of releases analysis.
 %%  ~~function to do ... ~~
