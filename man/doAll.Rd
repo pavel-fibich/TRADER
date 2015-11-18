@@ -9,7 +9,10 @@ The TRADER package provides only one way for disturbance reconstruction from tre
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-doAll(data, m1 = 10, m2 = 10, boundary = NULL, buffer = 2, criteria = 0.2, criteria2 = 0.5, segment = 0.5, prefix = "all", segment2 = 0.5, gfun = mean, length = 2, notop = 10, notop2 = 10, storedev = jpeg, drawing=TRUE,...)
+doAll(data, m1 = 10, m2 = 10, boundary = NULL, buffer = 2, 
+  criteria = 0.2, criteria2 = 0.5, segment = 0.5, segment2 = 0.5,
+  prefix = "all", gfun = mean, length = 2, notop = 10, notop2 = 10, 
+  storedev = jpeg, drawing=TRUE,...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -95,9 +98,9 @@ Splechtna, B.E., Gratzer, G. & Black, B.A. 2005. Disturbance history of a Europe
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{ \code{\link{absoluteIncreaseAll}},
-\code{\link{growthAveragingAll}},
-\code{\link{boundaryLineAll}},
-\code{\link{splechtnaAll}}
+\code{\link{growthAveragingALL}},
+\code{\link{boundaryLineALL}},
+\code{\link{splechtnaALL}}
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{

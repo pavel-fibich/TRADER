@@ -8,7 +8,10 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-splechtna(data, change = NULL, prior = NULL, m1 = 10, m2 = 10, boundary = NULL, buffer = 2, criteria = 0.2, criteria2 = 0.5, segment = 0.5, gfun = mean, length = 2, segment2 = 0.5, notop = 10, notop2 = 10, storedev = jpeg)
+splechtna(data, change = NULL, prior = NULL, m1 = 10, m2 = 10, 
+  boundary = NULL, buffer = 2, criteria = 0.2, criteria2 = 0.5, 
+  segment = 0.5, gfun = mean, length = 2, segment2 = 0.5, 
+  notop = 10, notop2 = 10, storedev = jpeg)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -86,7 +89,7 @@ splechtna(data, change = NULL, prior = NULL, m1 = 10, m2 = 10, boundary = NULL, 
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-\seealso{\code{\link{splechtnaAll}} \code{\link{plotRelease}} \code{\link{reduceByLB}}
+\seealso{\code{\link{splechtnaALL}} \code{\link{plotRelease}} \code{\link{reduceByLB}}
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{

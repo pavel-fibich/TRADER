@@ -8,7 +8,7 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-plotGrowth(data = NULL, prefix = "growth", polynom = 4, store = TRUE, storedev = jpeg)
+plotGrowth(data = NULL, prefix = "growth", polynom = 4, store = TRUE, storedev = jpeg, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

@@ -13,7 +13,10 @@ If \bold{black=FALSE}: Radial-growth averaging criteria developed by Nowacki & A
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-noblabrams(data = NULL, prior = NULL, change = NULL, m1 = 10, m2 = 10, boundary = NULL, buffer = 2, criteria = 0.25, criteria2 = 0.5, segment = 0.5, segment2 = 0.5, black = FALSE, gfun = mean, length = 2, notop = 10, notop2 = 10, storedev = jpeg)
+noblabrams(data = NULL, prior = NULL, change = NULL, m1 = 10, m2 = 10, 
+  boundary = NULL, buffer = 2, criteria = 0.25, criteria2 = 0.5, 
+  segment = 0.5, segment2 = 0.5, black = FALSE, gfun = mean, length = 2, 
+  notop = 10, notop2 = 10, storedev = jpeg)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -103,7 +106,7 @@ Black, B.A., Abrams, M.D., Rentch, J.S. & Gould, P.J. (2009) Properties of bound
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{growthAveragingAll}}, \code{\link{boundaryLineAll}}, \code{\link{plotRelease}}, \code{\link{reduceByLB}}
+\code{\link{growthAveragingALL}}, \code{\link{boundaryLineALL}}, \code{\link{plotRelease}}, \code{\link{reduceByLB}}
 }
 \examples{
 data(relData)

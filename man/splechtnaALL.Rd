@@ -8,7 +8,10 @@
 
 }
 \usage{
-splechtnaALL(data, releases = NULL, m1 = 10, m2 = 10, boundary = NULL, buffer = 2, drawing = TRUE, criteria = 0.2, criteria2 = 0.5, segment = 0.5, segment2 = 0.5, prefix = "sp", gfun = mean, length = 2, notop = 10, notop2 = 10, storedev = jpeg, ...)
+splechtnaALL(data, releases = NULL, m1 = 10, m2 = 10, boundary = NULL, 
+  buffer = 2, drawing = TRUE, criteria = 0.2, criteria2 = 0.5, 
+  segment = 0.5, segment2 = 0.5, prefix = "sp", gfun = mean, 
+  length = 2, notop = 10, notop2 = 10, storedev = jpeg, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

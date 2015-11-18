@@ -8,7 +8,9 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-boundaryGet(data, prior = NULL, change = NULL, m1 = 10, m2 = 10, segment = 0.5, segment2 = 0.5, notop = 10, notop2 = 10, gfun = mean, bfun = mean)
+boundaryGet(data, prior = NULL, change = NULL, m1 = 10, m2 = 10, 
+  segment = 0.5, segment2 = 0.5, notop = 10, notop2 = 10, 
+  gfun = mean, bfun = mean)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

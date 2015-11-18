@@ -9,7 +9,8 @@ Barplot number of releases according given criteria.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-plotNORelease(data, inyears, in2years = NULL, criteria, criteria2 = NULL, prefix = "rel", store = TRUE, storedev = jpeg)
+plotNORelease(data, inyears, in2years = NULL, criteria, criteria2 = NULL, 
+  prefix = "rel", store = TRUE, storedev = jpeg)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

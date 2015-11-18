@@ -8,7 +8,10 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-boundaryLineALL(data, releases = NULL, m1 = 10, m2 = 10, boundary = NULL, buffer = 2, criteria = 0.2, criteria2 = 0.5, segment = 0.5, segment2 = 0.5, prefix = "bl", drawing = TRUE, gfun = mean, length = 2, notop = 10, notop2 = 10, storedev = jpeg, ...)
+boundaryLineALL(data, releases = NULL, m1 = 10, m2 = 10, boundary = NULL, 
+  buffer = 2, criteria = 0.2, criteria2 = 0.5, segment = 0.5, 
+  segment2 = 0.5, prefix = "bl", drawing = TRUE, gfun = mean, 
+  length = 2, notop = 10, notop2 = 10, storedev = jpeg, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -99,7 +102,8 @@ Black, B.A., Abrams, M.D., Rentch, J.S. & Gould, P.J. (2009) Properties of bound
 \examples{
 data(relData)
 boundaryLineALL(relData1)
-boundaryLineALL(relData1,length=3,buffer=4,storedev=pdf,boundary=function(x) {5.0067*exp(-0.664*x)} )
+boundaryLineALL(relData1,length=3,buffer=4,storedev=pdf,
+  boundary=function(x) {5.0067*exp(-0.664*x)} )
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

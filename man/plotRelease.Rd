@@ -87,10 +87,10 @@ plotRelease(data, abs, rel, treeno = 1, method = "FraverWhite", type = "l", xlab
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{absoluteIncreaseAll}},
-\code{\link{growthAveragingAll}},
-\code{\link{boundaryLineAll}},
-\code{\link{splechtnaAll}}
+\code{\link{absoluteIncreaseALL}},
+\code{\link{growthAveragingALL}},
+\code{\link{boundaryLineALL}},
+\code{\link{splechtnaALL}}
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{

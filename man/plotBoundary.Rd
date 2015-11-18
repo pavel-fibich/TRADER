@@ -8,7 +8,8 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-plotBoundary(boundaries, x, y, boundary, rsq = NULL, prefix = "bo", criteria = 0.2, criteria2 = 0.5, store = TRUE, storedev = jpeg)
+plotBoundary(boundaries, x, y, boundary, rsq = NULL, prefix = "bo", 
+  criteria = 0.2, criteria2 = 0.5, store = TRUE, storedev = jpeg)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

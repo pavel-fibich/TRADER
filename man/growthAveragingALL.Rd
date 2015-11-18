@@ -8,7 +8,9 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-growthAveragingALL(data, releases = NULL, m1 = 10, m2 = 10, buffer = 2, drawing = TRUE, criteria = 0.25, criteria2 = 0.5, prefix = "ga", gfun = mean, length = 2, storedev = jpeg, ...)
+growthAveragingALL(data, releases = NULL, m1 = 10, m2 = 10, 
+  buffer = 2, drawing = TRUE, criteria = 0.25, criteria2 = 0.5, 
+  prefix = "ga", gfun = mean, length = 2, storedev = jpeg, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -74,7 +76,7 @@ growthAveragingALL(data, releases = NULL, m1 = 10, m2 = 10, buffer = 2, drawing 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-\code{\link{abrams}}, \code{\link{doAll}} 
+\code{\link{noblabrams}}, \code{\link{doAll}} 
 }
 \examples{
 data(relData)

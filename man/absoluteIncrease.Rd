@@ -9,7 +9,8 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-absoluteIncrease(data, abs = NULL, abs.threshold = NULL, m1 = 10, m2 = 10, buffer = 2, gfun = mean, length = 2)
+absoluteIncrease(data, abs = NULL, abs.threshold = NULL, 
+  m1 = 10, m2 = 10, buffer = 2, gfun = mean, length = 2)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -64,7 +65,7 @@ absoluteIncrease(data, abs = NULL, abs.threshold = NULL, m1 = 10, m2 = 10, buffe
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 
-\seealso{\code{\link{absoluteIncreaseAll}}, \code{\link{plotRelease}}, \code{\link{reduceByLB}}
+\seealso{\code{\link{absoluteIncreaseALL}}, \code{\link{plotRelease}}, \code{\link{reduceByLB}}
 }
 \examples{
 data(relData)

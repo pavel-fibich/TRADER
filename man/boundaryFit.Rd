@@ -8,7 +8,8 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-boundaryFit(boundaries, x, y, boundary = NULL, prefix = "bo", store = TRUE, storedev = pdf, initNLS = NULL)
+boundaryFit(boundaries, x, y, boundary = NULL, prefix = "bo", 
+  store = TRUE, storedev = pdf, initNLS = NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

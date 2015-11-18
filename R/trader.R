@@ -139,8 +139,9 @@ splechtnaALL<- function(data, releases=NULL,m1=10,m2=10, boundary=NULL, buffer=2
 # NEEDS dplr data
 # RETURNS do figures and tables with prefix
 doAll<- function(data,m1=10,m2=10, boundary=NULL, buffer=2, 
-                 drawing=TRUE, criteria=0.2, criteria2=0.5, segment=0.5,prefix="all", 
-                 segment2=0.5,gfun=mean,length=2, notop=10,notop2=10,storedev=jpeg,...) {
+                 criteria=0.2, criteria2=0.5, segment=0.5,segment2=0.5,prefix="all", 
+                 gfun=mean,length=2, notop=10,notop2=10,storedev=jpeg,
+                 drawing=TRUE,...) {
   
   abs<-absIncrease(data,m1,m2)
   abs.threshold<- absTreshold(abs)
