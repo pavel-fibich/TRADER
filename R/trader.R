@@ -1290,7 +1290,8 @@ plotRelease<-function(data, abs, rel, treeno=1, method = "FraverWhite",
     for (i in 1:length(addHLines) ) {
       abline(h = mytimes*addHLines[i], col = addHLinesCol[i],lty = "dotted" )    
     }
-    text(x=min( abs[cls2,1],na.rm=T ),y=mytimes*(addHLines)+((myrange[2]-myrange[1])/20),
+    if ( lenght(addHLines) >0 )
+      text(x=min( abs[cls2,1],na.rm=T ),y=mytimes*(addHLines)+((myrange[2]-myrange[1])/20),
        labels=round(addHLines*mytimes,2),col=addHLinesCol,cex = smallcex)
   
     # plot points
