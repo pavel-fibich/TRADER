@@ -80,7 +80,6 @@ For details look at methods that are evaluated: \code{\link{absoluteIncrease}}, 
 }
 \references{
 Nowacki, G.J. & Abrams, M.D. 1997. Radial-growth averaging criteria for reconstructing disturbance histories from presettlement-origin oaks. Ecological Monographs, 67, 225-249.
-%%
 \cr
 Black, B.A. & Abrams, M.D. 2003. Use of boundary-line growth patterns as a basis for dendroecological release criteria. Ecological Applications, 13, 1733-1749.
 \cr
@@ -88,10 +87,9 @@ Fraver, S. & White, A.S. 2005. Identifying growth releases in dendrochronologica
 \cr
 Splechtna, B.E., Gratzer, G. & Black, B.A. 2005. Disturbance history of a European old-growth mixed-species forest - A spatial dendro-ecological analysis. Journal of Vegetation Science, 16, 511-522.
 }
-\author{
-%%  ~~who you are~~
-}
+\author{Pavel Fibich <pavel.fibich@prf.jcu.cz>, Jan Altman <altman.jan@gmail.com>, Tuomas Aakala <tuomas.aakala@helsinki.fi>, Jiri Dolezal <jiriddolezal@gmail.com>}
 \note{
+Check reference.
 %%  ~~further notes~~
 }
 
@@ -105,7 +103,6 @@ Splechtna, B.E., Gratzer, G. & Black, B.A. 2005. Disturbance history of a Europe
 }
 \examples{
 data(relData)
-doAll(relData1)
 doAll(relData1,length=5,stodev=pdf)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

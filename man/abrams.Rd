@@ -5,12 +5,11 @@
 %%  ~~function to do ... ~~
 }
 \description{
-There is a split of behaviour of this function according parameter \code{black}.
+There is a split of behaviour of this function according parameter \code{black}. }
+\details{
+  If \bold{ black=TRUE}: Boundary-line method scales the  percent growth change of Nowacki & Abrams (1997) according to growth rate prior to disturbance. In their example, Black & Abrams (2003) defined moderate and major releases as those falling within 20-49.9\%, and 50-100\% of the boundary line, respectively. Advantage of the boundary-line is standardization, which takes into account the relationships among tree age, size, and canopy class determining radial growth rate (Black et al. 2004). On the downside, Black et al. (2009) suggest approximately 50000 ring width measurements is necessary for boundary line determination for a given species (Black et al. 2009).
 \cr
-If \bold{ black=TRUE}: Boundary-line method scales the  percent growth change of Nowacki & Abrams (1997) according to growth rate prior to disturbance. In their example, Black & Abrams (2003) defined moderate and major releases as those falling within 20-49.9\%, and 50-100\% of the boundary line, respectively. Advantage of the boundary-line is standardization, which takes into account the relationships among tree age, size, and canopy class determining radial growth rate (Black et al. 2004). On the downside, Black et al. (2009) suggest approximately 50000 ring width measurements is necessary for boundary line determination for a given species (Black et al. 2009).
-\cr
-If \bold{black=FALSE}: Radial-growth averaging criteria developed by Nowacki & Abrams (1997) is one of the most often used techniques from this category. This method computes the percentage growth change (\%GC) between average radial growth over the preceding 10-year period, M1 (including the target year), and average radial growth over the subsequent 10-year period, M2 (excluding the target year): \%GC = [(M2-M1)/M1] * 100. Minimum threshold for release is 25\% growth change for moderate and >50\% for major release. The advantage of this method is its broad applicability even for a small number of samples, and that information about species autecology is not necessary. On the other hand, this generality of radial-growth averaging may lead to detection of false releases and missing of true releases (Black & Abrams 2003; Fraver & White 2005). These inaccuracies are primarily caused by different growth rates in young, small, and suppressed trees when compared to older, larger and dominant trees.
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+  If \bold{black=FALSE}: Radial-growth averaging criteria developed by Nowacki & Abrams (1997) is one of the most often used techniques from this category. This method computes the percentage growth change (\%GC) between average radial growth over the preceding 10-year period, M1 (including the target year), and average radial growth over the subsequent 10-year period, M2 (excluding the target year): \%GC = [(M2-M1)/M1] * 100. Minimum threshold for release is 25\% growth change for moderate and >50\% for major release. The advantage of this method is its broad applicability even for a small number of samples, and that information about species autecology is not necessary. On the other hand, this generality of radial-growth averaging may lead to detection of false releases and missing of true releases (Black & Abrams 2003; Fraver & White 2005). These inaccuracies are primarily caused by different growth rates in young, small, and suppressed trees when compared to older, larger and dominant trees.
 }
 \usage{
 noblabrams(data = NULL, prior = NULL, change = NULL, m1 = 10, m2 = 10, 
@@ -72,9 +71,7 @@ noblabrams(data = NULL, prior = NULL, change = NULL, m1 = 10, m2 = 10,
 %%     ~~Describe \code{storedev} here~~
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
+
 \value{Return list object with
 %%  ~Describe the value returned
 %%  If it is a LIST, use
@@ -87,19 +84,18 @@ noblabrams(data = NULL, prior = NULL, change = NULL, m1 = 10, m2 = 10,
 %% ...
 }
 \references{Nowacki, G.J. & Abrams, M.D. 1997. Radial-growth averaging criteria for reconstructing disturbance histories from presettlement-origin oaks. Ecological Monographs, 67, 225-249.
-%%
 \cr
 Black, B.A. & Abrams, M.D. (2003) Use of boundary-line growth patterns as a basis for dendroecological release criteria. Ecological Applications, 13, 1733-1749.
 \cr
 Black, B.A., Abrams, M.D., Gagen, M., Daniels, L.D., Kipfmueller, K.F., Speer, J.H. & Anchukaitis, K.J. (2004) Development and application of boundary-line release criteria. Dendrochronologia, 22, 31-42.
 \cr
-Black, B.A., Abrams, M.D., Rentch, J.S. & Gould, P.J. (2009) Properties of boundary-line release criteria in North American tree species. Annals of Forest Science, 66.
-%% ~put references to the literature/web site here ~
-}
+Black, B.A., Abrams, M.D., Rentch, J.S. & Gould, P.J. (2009) Properties of boundary-line release criteria in North American tree species. Annals of Forest Science, 66.}
 \author{
+Pavel Fibich <pavel.fibich@prf.jcu.cz>, Jan Altman <altman.jan@gmail.com>, Tuomas Aakala <tuomas.aakala@helsinki.fi>, Jiri Dolezal <jiriddolezal@gmail.com>
 %%  ~~who you are~~
 }
 \note{
+Rather use functions with ALL suffix.
 %%  ~~further notes~~
 }
 

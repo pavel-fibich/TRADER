@@ -1,10 +1,11 @@
-\name{growthAveragingALL}
+  \name{growthAveragingALL}
 \alias{growthAveragingALL}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Overal function for Nowacki and Abrams 1997 method.
 %%  ~~function to do ... ~~
 }
-\description{Radial-growth averaging criteria developed by Nowacki & Abrams (1997) is one of the most often used techniques from this category. This method computes the percentage growth change (\%GC) between average radial growth over the preceding 10-year period, M1 (including the target year), and average radial growth over the subsequent 10-year period, M2 (excluding the target year): \%GC = [(M2-M1)/M1] * 100. Minimum threshold for release is 25\% growth change for moderate and >50\% for major release. The advantage of this method is its broad applicability even for a small number of samples, and that information about species autecology is not necessary. On the other hand, this generality of radial-growth averaging may lead to detection of false releases and missing of true releases (Black & Abrams 2003; Fraver & White 2005). These inaccuracies are primarily caused by different growth rates in young, small, and suppressed trees when compared to older, larger and dominant trees.
+\description{Radial-growth averaging criteria developed by Nowacki & Abrams (1997).
+
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -54,24 +55,20 @@ growthAveragingALL(data, releases = NULL, m1 = 10, m2 = 10,
 }
 }
 \details{
+Radial-growth averaging criteria developed by Nowacki & Abrams (1997) is one of the most often used techniques from this category. This method computes the percentage growth change (\%GC) between average radial growth over the preceding 10-year period, M1 (including the target year), and average radial growth over the subsequent 10-year period, M2 (excluding the target year): \%GC = [(M2-M1)/M1] * 100. Minimum threshold for release is 25\% growth change for moderate and >50\% for major release. The advantage of this method is its broad applicability even for a small number of samples, and that information about species autecology is not necessary. On the other hand, this generality of radial-growth averaging may lead to detection of false releases and missing of true releases (Black & Abrams 2003; Fraver & White 2005). These inaccuracies are primarily caused by different growth rates in young, small, and suppressed trees when compared to older, larger and dominant trees.
 %%  ~~ If necessary, more details than the description above ~~
 }
-\value{
+\value{Write many tables and figures in the current directory.
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
 %%  \item{comp2 }{Description of 'comp2'}
 %% ...
 }
-\references{
-%% ~put references to the literature/web site here ~
+\references{Nowacki, G.J. & Abrams, M.D. 1997. Radial-growth averaging criteria for reconstructing disturbance histories from presettlement-origin oaks. Ecological Monographs, 67, 225-249.
 }
-\author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
-}
+\author{Pavel Fibich <pavel.fibich@prf.jcu.cz>, Jan Altman <altman.jan@gmail.com>, Tuomas Aakala <tuomas.aakala@helsinki.fi>, Jiri Dolezal <jiriddolezal@gmail.com>}
+\note{Check the reference.}
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 

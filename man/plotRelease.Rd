@@ -1,10 +1,10 @@
 \name{plotRelease}
 \alias{plotRelease}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Plot releases by of given method.
+\title{Plot releases according the given method.
 %%  ~~function to do ... ~~
 }
-\description{
+\description{Plot releases according the given method.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -69,7 +69,7 @@ plotRelease(data, abs, rel, treeno = 1, method = "FraverWhite",
 %%     ~~Describe \code{\dots} here~~
 }
 }
-\details{
+\details{Complex plotting function of releases.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{Plot releases for given tree (\code{treeno}).
@@ -79,13 +79,13 @@ plotRelease(data, abs, rel, treeno = 1, method = "FraverWhite",
 %%  \item{comp2 }{Description of 'comp2'}
 %% ...
 }
-\references{
+\references{Altman J, Fibich P, Dolezal J & Aakala T (2014) TRADER: a package for Tree Ring Analysis of Disturbance Events in R. Dendrochonologia 32: 107-112.
 %% ~put references to the literature/web site here ~
 }
-\author{
+\author{Pavel Fibich <pavel.fibich@prf.jcu.cz>, Jan Altman <altman.jan@gmail.com>, Tuomas Aakala <tuomas.aakala@helsinki.fi>, Jiri Dolezal <jiriddolezal@gmail.com>
 %%  ~~who you are~~
 }
-\note{
+\note{Check the reference.
 %%  ~~further notes~~
 }
 

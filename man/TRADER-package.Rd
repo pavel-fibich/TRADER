@@ -12,8 +12,8 @@ The TRADER package provides only one way for disturbance reconstruction from tre
 \tabular{ll}{
 Package: \tab TRADER\cr
 Type: \tab Package\cr
-Version: \tab 1.0.8\cr
-Date: \tab 2014-12-12\cr
+Version: \tab 1.2-0\cr
+Date: \tab 2015-11-20\cr
 License: \tab GPL-2 | GPL-3\cr
 }
 library(TRADER)
@@ -26,7 +26,6 @@ Maintainer: Pavel Fibich <pavel.fibich@prf.jcu.cz>
 }
 \references{
 Nowacki, G.J. & Abrams, M.D. 1997. Radial-growth averaging criteria for reconstructing disturbance histories from presettlement-origin oaks. Ecological Monographs, 67, 225-249.
-%%
 \cr
 Black, B.A. & Abrams, M.D. 2003. Use of boundary-line growth patterns as a basis for dendroecological release criteria. Ecological Applications, 13, 1733-1749.
 \cr
@@ -44,7 +43,6 @@ data(relData)
 
 plotFirstYears(relData1)
 plotGrowth(relData1)
-doAll(relData1)
 
 absoluteIncreaseALL(relData1,length=3,buffer=4,storedev=jpeg)
 growthAveragingALL(relData1,length=3,buffer=4,storedev=pdf)

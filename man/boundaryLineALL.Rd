@@ -4,7 +4,7 @@
 \title{Overal function for Black and Abrams 2003 method or "pure boundary line".
 %%  ~~function to do ... ~~
 }
-\description{Boundary-line method scales the  percent growth change of Nowacki & Abrams (1997) according to growth rate prior to disturbance. In their example, Black & Abrams (2003) defined moderate and major releases as those falling within 20-49.9\%, and 50-100\% of the boundary line, respectively. Advantage of the boundary-line is standardization, which takes into account the relationships among tree age, size, and canopy class determining radial growth rate (Black et al. 2004). On the downside, Black et al. (2009) suggest approximately 50000 ring width measurements is necessary for boundary line determination for a given species (Black et al. 2009).
+\description{Boundary-line method scales the  percent growth change of Nowacki & Abrams (1997).
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -70,10 +70,10 @@ boundaryLineALL(data, releases = NULL, m1 = 10, m2 = 10, boundary = NULL,
 %%     ~~Describe \code{\dots} here~~
 }
 }
-\details{
+\details{Boundary-line method scales the  percent growth change of Nowacki & Abrams (1997) according to growth rate prior to disturbance. In their example, Black & Abrams (2003) defined moderate and major releases as those falling within 20-49.9\%, and 50-100\% of the boundary line, respectively. Advantage of the boundary-line is standardization, which takes into account the relationships among tree age, size, and canopy class determining radial growth rate (Black et al. 2004). On the downside, Black et al. (2009) suggest approximately 50000 ring width measurements is necessary for boundary line determination for a given species (Black et al. 2009).
 %%  ~~ If necessary, more details than the description above ~~
 }
-\value{
+\value{Write many tables and figures in the current directory.
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
@@ -87,10 +87,11 @@ Black, B.A., Abrams, M.D., Gagen, M., Daniels, L.D., Kipfmueller, K.F., Speer, J
 Black, B.A., Abrams, M.D., Rentch, J.S. & Gould, P.J. (2009) Properties of boundary-line release criteria in North American tree species. Annals of Forest Science, 66.
 %% ~put references to the literature/web site here ~
 }
-\author{
+\author{Pavel Fibich <pavel.fibich@prf.jcu.cz>, Jan Altman <altman.jan@gmail.com>, Tuomas Aakala <tuomas.aakala@helsinki.fi>, Jiri Dolezal <jiriddolezal@gmail.com>
 %%  ~~who you are~~
 }
 \note{
+Check reference.
 %%  ~~further notes~~
 }
 

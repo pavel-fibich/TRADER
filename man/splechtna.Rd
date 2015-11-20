@@ -4,7 +4,7 @@
 \title{Splechtna et al. 2005 type of releases analysis.
 %%  ~~function to do ... ~~
 }
-\description{Splechtna is a combination of radial-growth averaging and boundary-line technique. This method was developed by Splechtna, Gratzer & Black (2005) and as a potential release accepts only growth pulses exceeding 50\% growth change according to Nowacki & Abrams (1997). Only these potential releases were then scaled relative to the boundary line.
+\description{Splechtna is a combination of radial-growth averaging and boundary-line technique. 
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -63,7 +63,7 @@ splechtna(data, change = NULL, prior = NULL, m1 = 10, m2 = 10,
 %%     ~~Describe \code{storedev} here~~
 }
 }
-\details{
+\details{Splechtna is a combination of radial-growth averaging and boundary-line technique. This method was developed by Splechtna, Gratzer & Black (2005) and as a potential release accepts only growth pulses exceeding 50\% growth change according to Nowacki & Abrams (1997). Only these potential releases were then scaled relative to the boundary line.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{Return list object with
@@ -80,10 +80,10 @@ splechtna(data, change = NULL, prior = NULL, m1 = 10, m2 = 10,
 \references{Splechtna, B.E., Gratzer, G. & Black, B.A. 2005. Disturbance history of a European old-growth mixed-species forest - A spatial dendro-ecological analysis. Journal of Vegetation Science, 16, 511-522.
 %% ~put references to the literature/web site here ~
 }
-\author{
+\author{Pavel Fibich <pavel.fibich@prf.jcu.cz>, Jan Altman <altman.jan@gmail.com>, Tuomas Aakala <tuomas.aakala@helsinki.fi>, Jiri Dolezal <jiriddolezal@gmail.com>
 %%  ~~who you are~~
 }
-\note{
+\note{Check the reference.
 %%  ~~further notes~~
 }
 

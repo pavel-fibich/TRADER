@@ -54,23 +54,23 @@ relListToDataFrame(release_list,data)
 \item{on}{List of growth changes per tree.}
 \item{mytext}{Prefix of the info text.}
 }
-\details{
+\details{Just helping functions.
 %%  ~~ If necessary, more details than the description above ~~
 }
-\value{
+\value{Various.
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
 %%  \item{comp2 }{Description of 'comp2'}
 %% ...
 }
-\references{
+\references{Altman J, Fibich P, Dolezal J & Aakala T (2014) TRADER: a package for Tree Ring Analysis of Disturbance Events in R. Dendrochonologia 32: 107-112.
 %% ~put references to the literature/web site here ~
 }
-\author{
+\author{Pavel Fibich <pavel.fibich@prf.jcu.cz>, Jan Altman <altman.jan@gmail.com>, Tuomas Aakala <tuomas.aakala@helsinki.fi>, Jiri Dolezal <jiriddolezal@gmail.com>
 %%  ~~who you are~~
 }
-\note{
+\note{Check the reference.
 %%  ~~further notes~~
 }
 
@@ -80,7 +80,9 @@ relListToDataFrame(release_list,data)
 \code{\link{doAll}}
 }
 \examples{
+data(relData)
 
+abs<-absIncrease(relData1)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

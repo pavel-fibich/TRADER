@@ -1,1 +1,6 @@
 exportPattern("^[[:alpha:]]+") 
+import(dplR)
+importFrom("grDevices", "dev.off", "jpeg", "pdf", "rainbow")
+importFrom("graphics", "abline", "axis", "legend", "lines", "mtext","par", "plot", "points", "text")
+importFrom("stats", "deviance", "lm", "nls", "predict", "sd")
+importFrom("utils", "write.table")

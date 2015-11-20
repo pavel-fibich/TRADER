@@ -39,7 +39,7 @@ plotNORelease(data, inyears, in2years = NULL, criteria, criteria2 = NULL,
 %%     ~~Describe \code{storedev} here~~
 }
 }
-\details{
+\details{Plot number of releases and return data frame with release statistic.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{Return data frame with releases statistic per year.
@@ -49,13 +49,13 @@ plotNORelease(data, inyears, in2years = NULL, criteria, criteria2 = NULL,
 %%  \item{comp2 }{Description of 'comp2'}
 %% ...
 }
-\references{
+\references{Altman J, Fibich P, Dolezal J & Aakala T (2014) TRADER: a package for Tree Ring Analysis of Disturbance Events in R. Dendrochonologia 32: 107-112.
 %% ~put references to the literature/web site here ~
 }
-\author{
+\author{Pavel Fibich <pavel.fibich@prf.jcu.cz>, Jan Altman <altman.jan@gmail.com>, Tuomas Aakala <tuomas.aakala@helsinki.fi>, Jiri Dolezal <jiriddolezal@gmail.com>
 %%  ~~who you are~~
 }
-\note{
+\note{Check the reference.
 %%  ~~further notes~~
 }
 

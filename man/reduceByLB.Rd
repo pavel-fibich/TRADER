@@ -31,7 +31,7 @@ reduceByLB(releases, above, buffer = 2, type = 1, length = 2, val = NULL)
 %%     ~~Describe \code{val} here~~
 }
 }
-\details{
+\details{Check the reference.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{Return list of releases reduced by length and buffer.
@@ -41,19 +41,22 @@ reduceByLB(releases, above, buffer = 2, type = 1, length = 2, val = NULL)
 %%  \item{comp2 }{Description of 'comp2'}
 %% ...
 }
-\references{
+\references{Altman J, Fibich P, Dolezal J & Aakala T (2014) TRADER: a package for Tree Ring Analysis of Disturbance Events in R. Dendrochonologia 32: 107-112.
 %% ~put references to the literature/web site here ~
 }
-\author{
+\author{Pavel Fibich <pavel.fibich@prf.jcu.cz>, Jan Altman <altman.jan@gmail.com>, Tuomas Aakala <tuomas.aakala@helsinki.fi>, Jiri Dolezal <jiriddolezal@gmail.com>
 %%  ~~who you are~~
 }
-\note{
+\note{Check the reference.
 %%  ~~further notes~~
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
+\code{\link{growthAveragingALL}},
+\code{\link{boundaryLineALL}},
+\code{\link{splechtnaALL}}
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{

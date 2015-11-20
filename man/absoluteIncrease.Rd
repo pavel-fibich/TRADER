@@ -5,7 +5,7 @@
 \title{Analysis by Fraver & White 2005 called "absolute increase"
 %%  ~~function to do ... ~~
 }
-\description{Absolute-increase method is the alternative to percent-increase method. In cases where species autecology (mean growth rate, species sensitivity, and range of growth responses) is well known, it is possible to determine the absolute threshold for release detection, instead of thresholds based on relative growth. Empirically determined absolute-increase threshold for each species roughly corresponded to 1.25 times the standard deviation (Fraver & White 2005). The absolute-increase method has only one threshold, and no distinction is made between moderate and major releases.
+\description{Absolute-increase method is the alternative to percent-increase method. 
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -40,6 +40,7 @@ absoluteIncrease(data, abs = NULL, abs.threshold = NULL,
 }
 }
 \details{
+In cases where species autecology (mean growth rate, species sensitivity, and range of growth responses) is well known, it is possible to determine the absolute threshold for release detection, instead of thresholds based on relative growth. Empirically determined absolute-increase threshold for each species roughly corresponded to 1.25 times the standard deviation (Fraver & White 2005). The absolute-increase method has only one threshold, and no distinction is made between moderate and major releases.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{Return list object with
@@ -56,9 +57,11 @@ absoluteIncrease(data, abs = NULL, abs.threshold = NULL,
 %% ~put references to the literature/web site here ~
 }
 \author{
+Pavel Fibich <pavel.fibich@prf.jcu.cz>, Jan Altman <altman.jan@gmail.com>, Tuomas Aakala <tuomas.aakala@helsinki.fi>, Jiri Dolezal <jiriddolezal@gmail.com>
 %%  ~~who you are~~
 }
 \note{
+Check reference.
 %%  ~~further notes~~
 }
 

@@ -15,14 +15,16 @@ absTreshold(abs, tvalue = 1.25)
   \item{abs}{A data.frame with series as columns and years as rows such as that produced by read.* function of dplR .
 %%     ~~Describe \code{abs} here~~
 }
-  \item{tvalue}{ constat from Fraver & White 2005.
+  \item{tvalue}{ constat from Fraver & White 2005
 %%     ~~Describe \code{tvalue} here~~
 }
 }
 \details{
+You can specifie threshold value or use 1.25 * standard deviation used in Fraver & White 2005.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
+  Returns one threshold value.
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
@@ -30,12 +32,14 @@ absTreshold(abs, tvalue = 1.25)
 %% ...
 }
 \references{
+Fraver, S. & White, A.S. 2005. Identifying growth releases in dendrochronological studies of forest disturbance. Canadian Journal of Forest Research-Revue Canadienne De Recherche Forestiere, 35, 1648-1656.
 %% ~put references to the literature/web site here ~
 }
 \author{
+Pavel Fibich <pavel.fibich@prf.jcu.cz>, Jan Altman <altman.jan@gmail.com>, Tuomas Aakala <tuomas.aakala@helsinki.fi>, Jiri Dolezal <jiriddolezal@gmail.com>
 %%  ~~who you are~~
 }
-\note{
+\note{Check the reference.
 %%  ~~further notes~~
 }
 

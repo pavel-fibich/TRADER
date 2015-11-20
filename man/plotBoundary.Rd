@@ -4,7 +4,7 @@
 \title{Plot boundary line.
 %%  ~~function to do ... ~~
 }
-\description{
+\description{Plot boundary line.
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -44,7 +44,7 @@ plotBoundary(boundaries, x, y, boundary, rsq = NULL, prefix = "bo",
 %%     ~~Describe \code{storedev} here~~
 }
 }
-\details{
+\details{Boundary-line method scales the  percent growth change of Nowacki & Abrams (1997) according to growth rate prior to disturbance. In their example, Black & Abrams (2003) defined moderate and major releases as those falling within 20-49.9\%, and 50-100\% of the boundary line, respectively. Advantage of the boundary-line is standardization, which takes into account the relationships among tree age, size, and canopy class determining radial growth rate (Black et al. 2004). On the downside, Black et al. (2009) suggest approximately 50000 ring width measurements is necessary for boundary line determination for a given species (Black et al. 2009).
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{Plot boundary line and priors.
@@ -54,13 +54,13 @@ plotBoundary(boundaries, x, y, boundary, rsq = NULL, prefix = "bo",
 %%  \item{comp2 }{Description of 'comp2'}
 %% ...
 }
-\references{
+\references{Altman J, Fibich P, Dolezal J & Aakala T (2014) TRADER: a package for Tree Ring Analysis of Disturbance Events in R. Dendrochonologia 32: 107-112.
 %% ~put references to the literature/web site here ~
 }
-\author{
+\author{Pavel Fibich <pavel.fibich@prf.jcu.cz>, Jan Altman <altman.jan@gmail.com>, Tuomas Aakala <tuomas.aakala@helsinki.fi>, Jiri Dolezal <jiriddolezal@gmail.com>
 %%  ~~who you are~~
 }
-\note{
+\note{Check the reference.
 %%  ~~further notes~~
 }
 

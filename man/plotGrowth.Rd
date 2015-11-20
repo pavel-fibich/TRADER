@@ -30,7 +30,7 @@ plotGrowth(data = NULL, prefix = "growth", polynom = 4,
 }
   \item{...}{Arguments passed to plot function.}
 }
-\details{
+\details{Plot function focusing on the trend of the growth of trees.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{Plot growth of all trees.
@@ -40,13 +40,13 @@ plotGrowth(data = NULL, prefix = "growth", polynom = 4,
 %%  \item{comp2 }{Description of 'comp2'}
 %% ...
 }
-\references{
+\references{Altman J, Fibich P, Dolezal J & Aakala T (2014) TRADER: a package for Tree Ring Analysis of Disturbance Events in R. Dendrochonologia 32: 107-112.
 %% ~put references to the literature/web site here ~
 }
-\author{
+\author{Pavel Fibich <pavel.fibich@prf.jcu.cz>, Jan Altman <altman.jan@gmail.com>, Tuomas Aakala <tuomas.aakala@helsinki.fi>, Jiri Dolezal <jiriddolezal@gmail.com>
 %%  ~~who you are~~
 }
-\note{
+\note{Check the reference.
 %%  ~~further notes~~
 }
 
