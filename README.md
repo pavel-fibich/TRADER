@@ -7,6 +7,7 @@ The TRADER package provides only one way for disturbance reconstruction from tre
 
 R package is downloadable from http://botanika.prf.jcu.cz/fibich/TRADER_1.2-0.tar.gz
 
+TRADER is on CRAN https://cran.r-project.org/web/packages/TRADER/
 
 GITHUB
 ======
