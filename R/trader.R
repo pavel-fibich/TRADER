@@ -55,13 +55,19 @@ growthAveragingALL<- function(data,releases=NULL,m1=10,m2=10, buffer=2, drawing=
     }
   }
   #tables
+  releases$onlyModerate$year=rownames(releases$onlyModerate)
+  releases$onlyModerate = releases$onlyModerate[,c(ncol(releases$onlyModerate),1:(-1+ncol(releases$onlyModerate)))]
+  releases$onlyMajor$year=rownames(releases$onlyMajor)
+  releases$onlyModerate = releases$onlyMajor[,c(ncol(releases$onlyMajor),1:(-1+ncol(releases$onlyMajor)))]
+  
+  
   write.table ( releases$change, paste(prefix,"_change.csv", sep = ""), sep="\t",row.names=F)
   #write.table ( releases$releases, paste(prefix,"_releases_tops.csv", sep = ""), sep="\t",row.names=F)
   write.table ( releases$all_releases, paste(prefix,"_releases_all.csv", sep = ""), sep="\t",row.names=F)
   write.table ( releases$years_list_total, paste(prefix,"_releases_years_total.csv", sep = ""), row.names=F,sep="\t")
   write.table ( releases$pgc, paste(prefix,"_releases_values_total.csv", sep = ""), row.names=F,sep="\t")
-  write.table ( releases$onlyMajor, paste(prefix,"_releases_Only_Major.csv", sep = ""), row.names=T,sep="\t")
-  write.table ( releases$onlyModerate, paste(prefix,"_releases_Only_Moderate.csv", sep = ""), row.names=T,sep="\t")
+  write.table ( releases$onlyMajor, paste(prefix,"_releases_Only_Major.csv", sep = ""), row.names=F,sep="\t")
+  write.table ( releases$onlyModerate, paste(prefix,"_releases_Only_Moderate.csv", sep = ""), row.names=F,sep="\t")
   #return(releases)
 }
 
@@ -90,13 +96,19 @@ boundaryLineALL<- function(data,releases=NULL,m1=10,m2=10, boundary=NULL, buffer
     }
   }
   #tables
+  releases$onlyModerate$year=rownames(releases$onlyModerate)
+  releases$onlyModerate = releases$onlyModerate[,c(ncol(releases$onlyModerate),1:(-1+ncol(releases$onlyModerate)))]
+  releases$onlyMajor$year=rownames(releases$onlyMajor)
+  releases$onlyModerate = releases$onlyMajor[,c(ncol(releases$onlyMajor),1:(-1+ncol(releases$onlyMajor)))]
+  
+  
   write.table ( releases$change, paste(prefix,"_change.csv", sep = ""), sep="\t",row.names=F)
   #write.table ( releases$releases, paste(prefix,"_releases_tops.csv", sep = ""), sep="\t",row.names=F)
   write.table ( releases$all_releases, paste(prefix,"_releases_all.csv", sep = ""), sep="\t",row.names=F)
   write.table ( releases$years_list_total, paste(prefix,"_releases_years_total.csv", sep = ""), row.names=F,sep="\t")
   write.table ( releases$pgc, paste(prefix,"_releases_values_total.csv", sep = ""), row.names=F,sep="\t")
-  write.table ( releases$onlyMajor, paste(prefix,"_releases_Only_Major.csv", sep = ""), row.names=T,sep="\t")
-  write.table ( releases$onlyModerate, paste(prefix,"_releases_Only_Moderate.csv", sep = ""), row.names=T,sep="\t")
+  write.table ( releases$onlyMajor, paste(prefix,"_releases_Only_Major.csv", sep = ""), row.names=F,sep="\t")
+  write.table ( releases$onlyModerate, paste(prefix,"_releases_Only_Moderate.csv", sep = ""), row.names=F,sep="\t")
   #return(releases)
 }
 
@@ -123,13 +135,19 @@ splechtnaALL<- function(data, releases=NULL,m1=10,m2=10, boundary=NULL, buffer=2
     }
   }
   #tables
+  releases$onlyModerate$year=rownames(releases$onlyModerate)
+  releases$onlyModerate = releases$onlyModerate[,c(ncol(releases$onlyModerate),1:(-1+ncol(releases$onlyModerate)))]
+  releases$onlyMajor$year=rownames(releases$onlyMajor)
+  releases$onlyModerate = releases$onlyMajor[,c(ncol(releases$onlyMajor),1:(-1+ncol(releases$onlyMajor)))]
+  
+  
   write.table ( releases$change, paste(prefix,"_change.csv", sep = ""), sep="\t",row.names=F)
   #write.table ( releases$releases, paste(prefix,"_releases_tops.csv", sep = ""), sep="\t",row.names=F)
   write.table ( releases$all_releases, paste(prefix,"_releases_all.csv", sep = ""), sep="\t",row.names=F)
   write.table ( releases$years_list_total, paste(prefix,"_releases_years_total.csv", sep = ""), row.names=F,sep="\t")
   write.table ( releases$pgc, paste(prefix,"_releases_values_total.csv", sep = ""), row.names=F,sep="\t")
-  write.table ( releases$onlyMajor, paste(prefix,"_releases_Only_Major.csv", sep = ""), row.names=T,sep="\t")
-  write.table ( releases$onlyModerate, paste(prefix,"_releases_Only_Moderate.csv", sep = ""), row.names=T,sep="\t")
+  write.table ( releases$onlyMajor, paste(prefix,"_releases_Only_Major.csv", sep = ""), row.names=F,sep="\t")
+  write.table ( releases$onlyModerate, paste(prefix,"_releases_Only_Moderate.csv", sep = ""), row.names=F,sep="\t")
   #return(releases)
 }
 
@@ -170,6 +188,8 @@ doAll<- function(data,m1=10,m2=10, boundary=NULL, buffer=2,
       dev.off()
     }
   }
+  #tables
+  
   prefix<-"ai"
   write.table ( abs, paste(prefix,"_change.csv", sep = ""), sep="\t",row.names=F)
   #write.table ( releasesFW$releases, paste(prefix,"_releases_tops.csv", sep = ""), sep="\t",row.names=F)
@@ -179,6 +199,12 @@ doAll<- function(data,m1=10,m2=10, boundary=NULL, buffer=2,
   write.table ( releasesFW$pgc, paste(prefix,"_releases_values_total.csv", sep = ""), 
                 row.names=F,sep="\t")
   prefix<-"ga"
+  releasesNA$onlyModerate$year=rownames(releasesNA$onlyModerate)
+  releasesNA$onlyModerate = releasesNA$onlyModerate[,c(ncol(releasesNA$onlyModerate),1:(-1+ncol(releasesNA$onlyModerate)))]
+  releasesNA$onlyMajor$year=rownames(releasesNA$onlyMajor)
+  releasesNA$onlyModerate = releasesNA$onlyMajor[,c(ncol(releasesNA$onlyMajor),1:(-1+ncol(releasesNA$onlyMajor)))]
+  
+  
   write.table ( releasesNA$change, paste(prefix,"_change.csv", sep = ""), sep="\t",row.names=F)
   #write.table ( releasesNA$releases, paste(prefix,"_releases_tops.csv", sep = ""), sep="\t",row.names=F)
   write.table ( releasesNA$all_releases, paste(prefix,"_releases_all.csv", sep = ""), sep="\t",row.names=F)
@@ -186,9 +212,16 @@ doAll<- function(data,m1=10,m2=10, boundary=NULL, buffer=2,
                 row.names=F,sep="\t")
   write.table ( releasesNA$pgc, paste(prefix,"_releases_values_total.csv", sep = ""), 
                 row.names=F,sep="\t")
-  write.table ( releasesNA$onlyMajor, paste(prefix,"_releases_Only_Major.csv", sep = ""), row.names=T,sep="\t")
-  write.table ( releasesNA$onlyModerate, paste(prefix,"_releases_Only_Moderate.csv", sep = ""), row.names=T,sep="\t")
+  write.table ( releasesNA$onlyMajor, paste(prefix,"_releases_Only_Major.csv", sep = ""), row.names=F,sep="\t")
+  write.table ( releasesNA$onlyModerate, paste(prefix,"_releases_Only_Moderate.csv", sep = ""), row.names=F,sep="\t")
+  
   prefix<-"bl"
+  releasesBA$onlyModerate$year=rownames(releasesBA$onlyModerate)
+  releasesBA$onlyModerate = releasesBA$onlyModerate[,c(ncol(releasesBA$onlyModerate),1:(-1+ncol(releasesBA$onlyModerate)))]
+  releasesBA$onlyMajor$year=rownames(releasesBA$onlyMajor)
+  releasesBA$onlyModerate = releasesBA$onlyMajor[,c(ncol(releasesBA$onlyMajor),1:(-1+ncol(releasesBA$onlyMajor)))]
+  
+  
   write.table ( releasesBA$change, paste(prefix,"_change.csv", sep = ""), sep="\t",row.names=F)
   #write.table ( releasesBA$releases, paste(prefix,"_releases_tops.csv", sep = ""), sep="\t",row.names=F)
   write.table ( releasesBA$all_releases, paste(prefix,"_releases_all.csv", sep = ""), sep="\t",row.names=F)
@@ -196,9 +229,15 @@ doAll<- function(data,m1=10,m2=10, boundary=NULL, buffer=2,
                 row.names=F,sep="\t")
   write.table ( releasesBA$pgc, paste(prefix,"_releases_values_total.csv", sep = ""), 
                 row.names=F,sep="\t")
-  write.table ( releasesBA$onlyMajor, paste(prefix,"_releases_Only_Major.csv", sep = ""), row.names=T,sep="\t")
-  write.table ( releasesBA$onlyModerate, paste(prefix,"_releases_Only_Moderate.csv", sep = ""), row.names=T,sep="\t")
+  write.table ( releasesBA$onlyMajor, paste(prefix,"_releases_Only_Major.csv", sep = ""), row.names=F,sep="\t")
+  write.table ( releasesBA$onlyModerate, paste(prefix,"_releases_Only_Moderate.csv", sep = ""), row.names=F,sep="\t")
+  
   prefix<-"sp"
+  releasesS$onlyModerate$year=rownames(releasesS$onlyModerate)
+  releasesS$onlyModerate = releasesS$onlyModerate[,c(ncol(releasesS$onlyModerate),1:(-1+ncol(releasesS$onlyModerate)))]
+  releasesS$onlyMajor$year=rownames(releasesS$onlyMajor)
+  releasesS$onlyModerate = releasesS$onlyMajor[,c(ncol(releasesS$onlyMajor),1:(-1+ncol(releasesS$onlyMajor)))]
+  
   write.table ( releasesS$change, paste(prefix,"_change.csv", sep = ""), sep="\t",row.names=F)
   #write.table ( releasesS$releases, paste(prefix,"_releases_tops.csv", sep = ""), sep="\t",row.names=F)  
   write.table ( releasesS$all_releases, paste(prefix,"_releases_all.csv", sep = ""), sep="\t",row.names=F)  
@@ -206,8 +245,8 @@ doAll<- function(data,m1=10,m2=10, boundary=NULL, buffer=2,
                 row.names=F,sep="\t")
   write.table ( releasesS$pgc, paste(prefix,"_releases_values_total.csv", sep = ""), 
                 row.names=F,sep="\t")
-  write.table ( releasesS$onlyMajor, paste(prefix,"_releases_Only_Major.csv", sep = ""), row.names=T,sep="\t")
-  write.table ( releasesS$onlyModerate, paste(prefix,"_releases_Only_Moderate.csv", sep = ""), row.names=T,sep="\t")
+  write.table ( releasesS$onlyMajor, paste(prefix,"_releases_Only_Major.csv", sep = ""), row.names=F,sep="\t")
+  write.table ( releasesS$onlyModerate, paste(prefix,"_releases_Only_Moderate.csv", sep = ""), row.names=F,sep="\t")
 }
 
 ##########################################################################################
