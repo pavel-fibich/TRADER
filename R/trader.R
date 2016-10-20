@@ -605,7 +605,7 @@ splechtna<-function(data,change=NULL,prior=NULL,m1=10,m2=10,boundary=NULL,buffer
                                             "& <",criteria2,"is"))
   rs2<-writeReleaseStats(release_list42,paste("Total number of releases >=",criteria2,"is"))
   
-  norel<-plotNORelease(data,rs,rs2, criteria=criteria, criteria2=criteria2,prefix="relsp")
+  norel<-plotNORelease(data,rs,rs2, criteria=criteria, criteria2=criteria2,prefix="relsp",storedev=pdf)
   
   inyears<-unlist(release_list4)
   inyears<-inyears[inyears!=0]
