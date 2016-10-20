@@ -12,8 +12,8 @@ The TRADER package provides only one way for disturbance reconstruction from tre
 \tabular{ll}{
 Package: \tab TRADER\cr
 Type: \tab Package\cr
-Version: \tab 1.2-0\cr
-Date: \tab 2015-11-20\cr
+Version: \tab 1.2-2\cr
+Date: \tab 2016-10-20\cr
 License: \tab GPL-2 | GPL-3\cr
 }
 library(TRADER)
