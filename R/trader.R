@@ -184,11 +184,11 @@ doAll<- function(data,m1=10,m2=10, abs.threshold=NULL, boundary=NULL, buffer=2,
       par(mfrow=c(2,2))      
       plotRelease(data,abs,releasesFW, i, method="FraverWhite",addHLines=c(abs.threshold),...)
       plotRelease(data,releasesNA$change,releasesNA, i, method="NowackiAbrams",
-                   addHLines=c(criteria+0.05,criteria2),plotfirst=FALSE,...)
+                   addHLines=c(criteriaNA+0.05,criteria2NA),plotfirst=FALSE,...)
       plotRelease(data,releasesBA$change,releasesBA, i, method="BlackAbrams",
-                   addHLines=c(criteria, criteria2),plotfirst=FALSE,...)
+                   addHLines=c(criteriaBA, criteria2BA),plotfirst=FALSE,...)
       plotRelease(data,releasesS$change,releasesS, i, method="Splechtna",
-                   addHLines=c(criteria, criteria2),plotfirst=FALSE,...)
+                   addHLines=c(criteriaS, criteria2S),plotfirst=FALSE,...)
       dev.off()
     }
   }

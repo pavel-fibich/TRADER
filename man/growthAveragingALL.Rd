@@ -11,7 +11,7 @@
 \usage{
 growthAveragingALL(data, releases = NULL, m1 = 10, m2 = 10, 
   buffer = 2, drawing = TRUE, criteria = 0.25, criteria2 = 0.5, 
-  prefix = "ga", gfun = mean, length = 2, storedev = jpeg, ...)
+  prefix = "ga", gfun = mean, length = 2, storedev = pdf, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

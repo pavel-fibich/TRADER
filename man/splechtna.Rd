@@ -11,7 +11,7 @@
 splechtna(data, change = NULL, prior = NULL, m1 = 10, m2 = 10, 
   boundary = NULL, buffer = 2, criteria = 0.2, criteria2 = 0.5, 
   segment = 0.5, gfun = mean, length = 2, segment2 = 0.5, 
-  notop = 10, notop2 = 10, storedev = jpeg)
+  notop = 10, notop2 = 10, storedev = pdf)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

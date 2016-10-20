@@ -9,7 +9,7 @@
 }
 \usage{
 plotBoundary(boundaries, x, y, boundary, rsq = NULL, prefix = "bo", 
-  criteria = 0.2, criteria2 = 0.5, store = TRUE, storedev = jpeg)
+  criteria = 0.2, criteria2 = 0.5, store = TRUE, storedev = pdf)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

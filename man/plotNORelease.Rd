@@ -10,7 +10,7 @@ Barplot number of releases according given criteria.
 }
 \usage{
 plotNORelease(data, inyears, in2years = NULL, criteria, criteria2 = NULL, 
-  prefix = "rel", store = TRUE, storedev = jpeg)
+  prefix = "rel", store = TRUE, storedev = pdf)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

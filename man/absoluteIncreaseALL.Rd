@@ -11,7 +11,7 @@
 \usage{
 absoluteIncreaseALL(data, abs = NULL, abs.threshold = NULL, 
   m1 = 10, m2 = 10, buffer = 2, prefix = "ai", drawing = TRUE, 
-  gfun = mean, length = 2, storedev = jpeg, ...)
+  gfun = mean, length = 2, storedev = pdf, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

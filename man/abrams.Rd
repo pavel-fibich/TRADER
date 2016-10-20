@@ -15,7 +15,7 @@ There is a split of behaviour of this function according parameter \code{black}.
 noblabrams(data = NULL, prior = NULL, change = NULL, m1 = 10, m2 = 10, 
   boundary = NULL, buffer = 2, criteria = 0.25, criteria2 = 0.5, 
   segment = 0.5, segment2 = 0.5, black = FALSE, gfun = mean, length = 2, 
-  notop = 10, notop2 = 10, storedev = jpeg)
+  notop = 10, notop2 = 10, storedev = pdf)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

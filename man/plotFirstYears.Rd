@@ -9,7 +9,7 @@
 }
 \usage{
 plotFirstYears(data = NULL, misspith = NULL, store = TRUE, 
-  storedev = jpeg, prefix="fy", ...)
+  storedev = pdf, prefix="fy", ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

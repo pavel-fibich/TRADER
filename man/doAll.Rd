@@ -9,10 +9,12 @@ The TRADER package provides only one way for disturbance reconstruction from tre
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-doAll(data, m1 = 10, m2 = 10, boundary = NULL, buffer = 2, 
-  criteria = 0.2, criteria2 = 0.5, segment = 0.5, segment2 = 0.5,
+doAll(data, m1 = 10, m2 = 10, abs.threshold = NULL, boundary = NULL, buffer = 2, 
+  criteriaNA = 0.2, criteria2NA = 0.5, 
+  criteriaBA = 0.2, criteria2BA = 0.5, segmentBA = 0.5, segment2BA = 0.5,
+  criteriaS = 0.2, criteria2S = 0.5, segmentS = 0.5, segment2S = 0.5,
   prefix = "all", gfun = mean, length = 2, notop = 10, notop2 = 10, 
-  storedev = jpeg, drawing=TRUE,...)
+  storedev = pdf, drawing=TRUE,...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

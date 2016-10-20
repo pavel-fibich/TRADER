@@ -9,7 +9,7 @@
 }
 \usage{
 plotGrowth(data = NULL, prefix = "growth", polynom = 4, 
-  store = TRUE, storedev = jpeg, ...)
+  store = TRUE, storedev = pdf, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
