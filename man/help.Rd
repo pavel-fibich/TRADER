@@ -20,7 +20,7 @@ absIncrease(data, m1 = 10, m2 = 10, gfun = mean)
 PGC(data, m1 = 10, m2 = 10, gfun = mean)
 PGCreleases(change, criteria = 0.2)
 PGCreleasesSplechtna(change, criteria = 0.5)
-priorGrowth(data, m1 = 10, m2 = 10, gfun = mean)
+priorGrowth(data, m1 = 10, m2 = 10, gfun = mean, dom1 = 0)
 writeReleaseStats(release_list, mytext)
 removeMajorFromModerate(mod,maj,zero,on)
 relListToDataFrame(release_list,data)
@@ -33,7 +33,7 @@ relListToDataFrame(release_list,data)
   \item{m1}{Determines the number of years to be averaged (including target year) for period prior the potential releas.
 %%     ~~Describe \code{m1} here~~
 }
-  \item{m2}{Determines the number of years to be averaged (including target year) for period prior the potential releas.
+  \item{m2}{Determines the number of years to be averaged (not including target year) for period after the potential releas.
 %%     ~~Describe \code{m2} here~~
 }
   \item{gfun}{Determines if M1 and M2 values are mean or median for selected period.
@@ -43,6 +43,9 @@ relListToDataFrame(release_list,data)
 %%     ~~Describe \code{criteria} here~~
 }
 \item{change}{Percentage growth change.
+%%     ~~Describe \code{criteria} here~~
+}
+\item{dom1}{If prior growth (dom1=0) or m1 is computed (dom1=1).
 %%     ~~Describe \code{criteria} here~~
 }
 \item{release_list}{List of releases per tree.

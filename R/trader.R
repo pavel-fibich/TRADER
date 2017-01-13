@@ -348,14 +348,14 @@ noblabrams<-function(data=NULL,prior=NULL,change=NULL,m1=10,m2=10,boundary=NULL,
                 "Buffer",buffer,"Length",length))
   }
     
-  if ( is.null(prior) )
-    prior <- priorGrowth(data, m1=m1, m2=m2, gfun=gfun) #prior growth   
   if ( is.null(change) )
     change<-PGC(data, m1=m1, m2=m2, gfun=gfun) #percent growth change
     
   names(change)[2:length(names(change))] <- names(data)  
   
   if ( black ) { # black=TRUE -> Black and Abrams 2003
+    if ( is.null(prior) )
+      prior <- priorGrowth(data, m1=m1, m2=m2, gfun=gfun) #prior growth   
     
     bo<-boundaryGet(data,prior=prior,change=change,m1=m1,m2=m2,segment=segment,
                     segment2=segment2,gfun=gfun,notop=notop,notop2=notop2)
@@ -407,7 +407,9 @@ noblabrams<-function(data=NULL,prior=NULL,change=NULL,m1=10,m2=10,boundary=NULL,
     }
     
     rm(releases3AllInc,t)
-  } else {
+  } else { # black=FALSE -> Nowacki and Abrams 1997
+    if ( is.null(prior) )
+      prior <- priorGrowth(data, m1=m1, m2=m2, gfun=gfun, dom1=1) #prior growth   
     #Count releases that fill the criteria given at the setup
     releases3 <- PGCreleases(change,criteria)
     
@@ -674,7 +676,7 @@ absTreshold<-function(abs,tvalue=1.25){
 # get priors
 # NEEDS dplr data
 # RETURNS prior
-priorGrowth <- function(data, m1=10, m2=10,gfun=mean){
+priorGrowth <- function(data, m1=10, m2=10,gfun=mean,dom1=0){
   
   series<-names(data)  
   years<-as.numeric(row.names(data)[m1+2:(length(data[,1])-m2-m1)])
@@ -683,8 +685,8 @@ priorGrowth <- function(data, m1=10, m2=10,gfun=mean){
     prior <- c()
     
     for(n in m1+2:(length(data[,i])-m2-m1)){ 
-      if( is.na(data[(n-(m1+1)), i]) == FALSE & is.na(data[(n+m2),i])==FALSE ){
-        prior.growth <- gfun(data[(n-m1):n,i])
+      if( is.na(data[(n-m1+1*dom1), i]) == FALSE & is.na(data[(n+m2),i])==FALSE ){
+        prior.growth <- gfun(data[(n-m1+dom1):(n-1+dom1),i])
         temp <- prior.growth
       } else {
           temp <- NA
@@ -710,9 +712,9 @@ PGC <- function(data, m1=10, m2=10,gfun=mean){
   for(i in 1:length(data)){  
     pgc <- c()
     for(n in m1+2:(length(data[,i])-(m2+m1))){ 
-      if(!is.na(data[(n+1-m1), i])& !is.na(data[(n+m2+1),i])){
+      if(!is.na(data[(n+1-m1), i])& !is.na(data[(n+m2),i])){
         prior.growth <- gfun(data[(n+1-m1):n,i])
-        post.growth <- gfun(data[(n+1):(n+1+m2),i])
+        post.growth <- gfun(data[(n+1):(n+m2),i])
         temp <-(post.growth-prior.growth)/prior.growth
       } else {
           temp <- NA
