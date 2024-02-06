@@ -10,8 +10,9 @@
 \usage{
 splechtnaALL(data, releases = NULL, m1 = 10, m2 = 10, boundary = NULL, 
   buffer = 2, drawing = TRUE, criteria = 0.2, criteria2 = 0.5, 
-  segment = 0.5, segment2 = 0.5, prefix = "sp", gfun = mean, 
-  length = 2, notop = 10, notop2 = 10, storedev = pdf, ...)
+  segment = 0.5, segment2 = 0.5, gfun = mean, 
+  length = 2, notop = 10, notop2 = 10, storedev = pdf, 
+  prefix = NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -66,7 +67,7 @@ splechtnaALL(data, releases = NULL, m1 = 10, m2 = 10, boundary = NULL,
 %%     ~~Describe \code{storedev} here~~
 }
 
-  \item{\dots}{
+  \item{\dots}{Further arguments pasted to plot function.
 %%     ~~Describe \code{\dots} here~~
 }
 }
@@ -98,9 +99,9 @@ splechtnaALL(data, releases = NULL, m1 = 10, m2 = 10, boundary = NULL,
 \examples{
 data(relData)
 splechtnaALL(relData1)
-splechtnaALL(relData1,length=3,buffer=4,storedev=pdf,boundary=function(x) {5.0067*exp(-0.664*x)} )
+\donttest{ splechtnaALL(relData1,length=3,buffer=4,storedev=pdf,boundary=function(x) {5.0067*exp(-0.664*x)} ) }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ splechtna }
+

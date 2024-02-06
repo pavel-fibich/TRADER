@@ -11,7 +11,7 @@
 splechtna(data, change = NULL, prior = NULL, m1 = 10, m2 = 10, 
   boundary = NULL, buffer = 2, criteria = 0.2, criteria2 = 0.5, 
   segment = 0.5, gfun = mean, length = 2, segment2 = 0.5, 
-  notop = 10, notop2 = 10, storedev = pdf)
+  notop = 10, notop2 = 10, storedev = pdf, prefix=NULL )
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -62,6 +62,9 @@ splechtna(data, change = NULL, prior = NULL, m1 = 10, m2 = 10,
   \item{storedev}{Format for saving the graphical outputs, eg. pdf or jpeg.
 %%     ~~Describe \code{storedev} here~~
 }
+\item{prefix}{Prefix of saved files.
+%%     ~~Describe \code{length} here~~
+}
 }
 \details{Splechtna is a combination of radial-growth averaging and boundary-line technique. This method was developed by Splechtna, Gratzer & Black (2005) and as a potential release accepts only growth pulses exceeding 50\% growth change according to Nowacki & Abrams (1997). Only these potential releases were then scaled relative to the boundary line.
 %%  ~~ If necessary, more details than the description above ~~
@@ -95,9 +98,9 @@ splechtna(data, change = NULL, prior = NULL, m1 = 10, m2 = 10,
 \examples{
 data(relData)
 rel<-splechtna(relData1)
-plotRelease(relData1,rel$change,rel,1,method="Splechtna")
+\donttest{ plotRelease(relData1,rel$change,rel,1,method="Splechtna") }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ splechtna }
+

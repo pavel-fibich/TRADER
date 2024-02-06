@@ -83,9 +83,9 @@ Check reference.
 data(relData)
 bo<-boundaryGet(relData1)
 plot(bo)
-plotBoundary(bo$bo,bo$x,bo$y,boundary=function(x) {5.0067*exp(-0.664*x)})
+\donttest{ plotBoundary(bo$bo,bo$x,bo$y,boundary=function(x) {5.0067*exp(-0.664*x)}) }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ boundary line }
+\keyword{ release }% __ONLY ONE__ keyword per line

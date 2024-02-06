@@ -8,19 +8,26 @@
 # NEEDS data
 # OPTIONAL ...
 # RETURNS do figures and tables with prefix
-absoluteIncreaseALL<- function(data,abs=NULL,abs.threshold=NULL,m1=10,m2=10,buffer=2,prefix="ai",
-                               drawing=TRUE,gfun=mean, length=2, storedev=pdf,...) {
+absoluteIncreaseALL<- function(data,abs=NULL,abs.threshold=NULL,m1=10,m2=10,buffer=2,
+                               drawing=TRUE,gfun=mean, length=2, storedev=pdf,
+                               prefix=NULL,...) {
+  if ( is.null(prefix) ) {
+    prefix <- paste0(tempdir(),"/allai")
+    print ( paste0("Specify prefix parameter, or output files will be stored as ", prefix,"*") )
+  } 
   
   if ( is.null(abs) )
     abs<-absIncrease(data,m1,m2)
   if ( is.null(abs.threshold) )
     abs.threshold<- absTreshold(abs)
-  releases <- absoluteIncrease(data,abs,abs.threshold,buffer=buffer,gfun=gfun,length=length)
+  releases <- absoluteIncrease(data,abs,abs.threshold,buffer=buffer,gfun=gfun,length=length,
+                               prefix=prefix)
   #figures
   if (drawing){
     for(i in 1:length(data)) {      
       storedev(paste(prefix,"_",gsub("/","_",names(data)[i]),".",deparse(substitute(storedev)),sep=""),pointsize = 10)
-      plotRelease(data,abs,releases, i, method="FraverWhite",addHLines=c(abs.threshold),...)
+      plotRelease(data,abs,releases, i, method="FraverWhite",addHLines=c(abs.threshold), 
+                  store=FALSE,prefix=prefix, ...)
       dev.off()
     }
   }
@@ -39,18 +46,24 @@ absoluteIncreaseALL<- function(data,abs=NULL,abs.threshold=NULL,m1=10,m2=10,buff
 # OPTIONAL ...
 # RETURNS do figures and tables with prefix
 growthAveragingALL<- function(data,releases=NULL,m1=10,m2=10, buffer=2, drawing=TRUE,
-                               criteria=0.25, criteria2=0.5, prefix="ga",gfun=mean,
-                              length=2, storedev=pdf, ...) {
+                               criteria=0.25, criteria2=0.5, gfun=mean,
+                              length=2, storedev=pdf, prefix=NULL, ...) {
+  if ( is.null(prefix) ) {
+    prefix <- paste0(tempdir(),"/allga")
+    print ( paste0("Specify prefix parameter, or output files will be stored as ", prefix,"*") )
+  } 
+  
   if ( is.null(releases) )
     releases<-noblabrams(data,m1=m1,m2=m2,buffer=buffer,length=length,
-                        criteria=criteria,criteria2=criteria2,black=FALSE,gfun=gfun)
+                        criteria=criteria,criteria2=criteria2,black=FALSE,gfun=gfun,
+                        prefix=prefix)
   
   #figures
   if (drawing){
     for(i in 1:length(data)) {
       storedev(paste(prefix,"_",gsub("/","_",names(data)[i]),".",deparse(substitute(storedev)),sep=""))
       plotRelease(data,releases$change,releases, i, method="NowackiAbrams",
-                   addHLines=c(criteria,criteria2),...)
+                  store=FALSE,addHLines=c(criteria,criteria2), prefix=prefix, ...)
       dev.off()
     }
   }
@@ -78,12 +91,18 @@ growthAveragingALL<- function(data,releases=NULL,m1=10,m2=10, buffer=2, drawing=
 # RETURNS do figures and tables with prefix
 boundaryLineALL<- function(data,releases=NULL,m1=10,m2=10, boundary=NULL, buffer=2, 
                                criteria=0.2, criteria2=0.5, segment=0.5, segment2=0.5,
-                           prefix="bl", drawing=TRUE,gfun=mean,length=2, 
-                           notop=10,notop2=10,storedev=pdf,...) {
+                           drawing=TRUE,gfun=mean,length=2,notop=10,notop2=10,storedev=pdf,
+                           prefix=NULL, ...) {
+  if ( is.null(prefix) ) {
+    prefix <- paste0(tempdir(),"/allbl")
+    print ( paste0("Specify prefix parameter, or output files will be stored as ", prefix,"*") )
+  } 
+  
   if ( is.null(releases) )
     releases<-noblabrams(data,m1=m1,m2=m2,boundary=boundary,buffer=buffer,gfun=gfun,length=length,
                         criteria=criteria,criteria2=criteria2,segment=segment,
-                     segment2=segment2,storedev=storedev,notop=notop,notop2=notop2,black=TRUE)
+                     segment2=segment2,storedev=storedev,notop=notop,notop2=notop2,black=TRUE,
+                     prefix=prefix)
   
   #figures
   if (drawing){
@@ -91,7 +110,7 @@ boundaryLineALL<- function(data,releases=NULL,m1=10,m2=10, boundary=NULL, buffer
       #print(paste(i))
       storedev(paste(prefix,"_",gsub("/","_",names(data)[i]),".",deparse(substitute(storedev)),sep=""))
       plotRelease(data,releases$change,releases, i, method="BlackAbrams",
-                   addHLines=c(criteria, criteria2))
+                  store=FALSE,addHLines=c(criteria, criteria2), prefix=prefix)
       dev.off()
     }
   }
@@ -118,19 +137,26 @@ boundaryLineALL<- function(data,releases=NULL,m1=10,m2=10, boundary=NULL, buffer
 # OPTIONAL ...
 # RETURNS do figures and tables with prefix
 splechtnaALL<- function(data, releases=NULL,m1=10,m2=10, boundary=NULL, buffer=2, drawing=TRUE,
-                            criteria=0.2, criteria2=0.5,segment=0.5, segment2=0.5,prefix="sp",
-                        gfun=mean,length=2,notop=10,notop2=10,storedev=pdf,...) {
+                            criteria=0.2, criteria2=0.5,segment=0.5, segment2=0.5,
+                        gfun=mean,length=2,notop=10,notop2=10,storedev=pdf,
+                        prefix=NULL, ...) {
+  if ( is.null(prefix) ) {
+    prefix <- paste0(tempdir(),"/allsp")
+    print ( paste0("Specify prefix parameter, or output files will be stored as ", prefix,"*") )
+  } 
+  
   if ( is.null(releases) )
     releases<-splechtna(data,m1=m1,m2=m2,boundary=boundary,buffer=buffer,gfun=gfun,
                            criteria=criteria,criteria2=criteria2,segment=segment,
-                        segment2=segment2,length=length,notop=notop,notop2=notop2,storedev=storedev)
+                        segment2=segment2,length=length,notop=notop,notop2=notop2,storedev=storedev,
+                        prefix=prefix)
   
   #figures
   if (drawing){
     for(i in 1:length(data)) {
       storedev(paste(prefix,"_",gsub("/","_",names(data)[i]),".",deparse(substitute(storedev)),sep=""))
       plotRelease(data,releases$change,releases, i, method="Splechtna",
-                   addHLines=c(criteria, criteria2),...)
+                  store=FALSE,addHLines=c(criteria, criteria2), prefix=prefix, ...)
       dev.off()
     }
   }
@@ -160,41 +186,55 @@ doAll<- function(data,m1=10,m2=10, abs.threshold=NULL, boundary=NULL, buffer=2,
                  criteriaNA=0.2, criteria2NA=0.5, 
                  criteriaBA=0.2, criteria2BA=0.5, segmentBA=0.5,segment2BA=0.5,
                  criteriaS=0.2, criteria2S=0.5, segmentS=0.5,segment2S=0.5,
-                 prefix="all", 
                  gfun=mean,length=2, notop=10,notop2=10,storedev=pdf,
-                 drawing=TRUE,...) {
+                 drawing=TRUE, prefix=NULL, ...) {
+  if ( is.null(prefix) ) {
+    prefix <- paste0(tempdir(),"/all")
+    prefix0 <- prefix
+    print ( paste0("Specify prefix parameter, or output files will be stored as ", prefix,"*") )
+  } else {
+    prefix0 <- prefix
+  }
+  
   
   abs<-absIncrease(data,m1,m2)
   if ( is.null(abs.threshold) )
     abs.threshold<- absTreshold(abs)
   releasesFW <- absoluteIncrease(data,abs,abs.threshold,m1=m1,m2=m2,buffer=buffer,gfun=gfun,
-                                 length=length)
+                                 length=length, prefix=paste0(prefix,"_ai") )
   releasesNA<-noblabrams(data,m1=m1,m2=m2,buffer=buffer,criteria=criteriaNA+0.05,
-                        criteria2=criteria2NA,black=FALSE,gfun=gfun,length=length,storedev=storedev)
+                        criteria2=criteria2NA,black=FALSE,gfun=gfun,length=length,storedev=storedev,
+                        prefix=paste0(prefix,"_noab"))
   releasesBA<-noblabrams(data,m1=m1,m2=m2,boundary=boundary,buffer=buffer,criteria=criteriaBA,
                         criteria2=criteria2BA,segment=segmentBA,black=TRUE,gfun=gfun,length=length,
-                     segment2=segment2BA,notop=notop,notop2=notop2,storedev=storedev)
+                     segment2=segment2BA,notop=notop,notop2=notop2,storedev=storedev,
+                     prefix=paste0(prefix,"_blab"))
   releasesS<-splechtna(data,m1=m1,m2=m2,boundary=boundary,buffer=buffer,criteria=criteriaS,
                           criteria2=criteria2S,segment=segmentS,gfun=gfun,length=length,
-                       segment2=segment2S,notop=notop,notop2=notop2,storedev=storedev)
+                       segment2=segment2S,notop=notop,notop2=notop2,storedev=storedev,
+                       prefix=paste0(prefix,"_sp"))
   
   if (drawing) {
     for(i in 1:length(data)) {      
       storedev(paste(prefix,"_",gsub("/","_",names(data)[i]),".",deparse(substitute(storedev)),sep=""))
       par(mfrow=c(2,2))      
-      plotRelease(data,abs,releasesFW, i, method="FraverWhite",addHLines=c(abs.threshold),...)
+      plotRelease(data,abs,releasesFW, i, method="FraverWhite",addHLines=c(abs.threshold),
+                  store=FALSE, prefix=prefix, ...)
       plotRelease(data,releasesNA$change,releasesNA, i, method="NowackiAbrams",
-                   addHLines=c(criteriaNA+0.05,criteria2NA),plotfirst=FALSE,...)
+                   addHLines=c(criteriaNA+0.05,criteria2NA),plotfirst=FALSE,
+                  store=FALSE, prefix=prefix, ...)
       plotRelease(data,releasesBA$change,releasesBA, i, method="BlackAbrams",
-                   addHLines=c(criteriaBA, criteria2BA),plotfirst=FALSE,...)
+                   addHLines=c(criteriaBA, criteria2BA),plotfirst=FALSE,
+                  store=FALSE, prefix=prefix, ...)
       plotRelease(data,releasesS$change,releasesS, i, method="Splechtna",
-                   addHLines=c(criteriaS, criteria2S),plotfirst=FALSE,...)
+                   addHLines=c(criteriaS, criteria2S),plotfirst=FALSE,
+                  store=FALSE, prefix=prefix,...)
       dev.off()
     }
   }
   #tables
   
-  prefix<-"ai"
+  prefix<-paste0(prefix0,"_ai")
   write.csv ( abs, paste(prefix,"_change.csv", sep = ""), row.names=F)
   #write.table ( releasesFW$releases, paste(prefix,"_releases_tops.csv", sep = ""), sep="\t",row.names=F)
   write.csv ( releasesFW$all_releases, paste(prefix,"_releases_all.csv", sep = ""), row.names=F)
@@ -202,7 +242,7 @@ doAll<- function(data,m1=10,m2=10, abs.threshold=NULL, boundary=NULL, buffer=2,
                 row.names=F)
   write.csv ( releasesFW$pgc, paste(prefix,"_releases_values_total.csv", sep = ""), 
                 row.names=F)
-  prefix<-"ga"
+  prefix<-paste0(prefix,"_ga")
   releasesNA$onlyModerate$year=rownames(releasesNA$onlyModerate)
   releasesNA$onlyModerate = releasesNA$onlyModerate[,c(ncol(releasesNA$onlyModerate),1:(-1+ncol(releasesNA$onlyModerate)))]
   releasesNA$onlyMajor$year=rownames(releasesNA$onlyMajor)
@@ -219,7 +259,7 @@ doAll<- function(data,m1=10,m2=10, abs.threshold=NULL, boundary=NULL, buffer=2,
   write.csv ( releasesNA$onlyMajor, paste(prefix,"_releases_Only_Major.csv", sep = ""), row.names=F)
   write.csv ( releasesNA$onlyModerate, paste(prefix,"_releases_Only_Moderate.csv", sep = ""), row.names=F)
   
-  prefix<-"bl"
+  prefix<-paste0(prefix0,"_bl")
   releasesBA$onlyModerate$year=rownames(releasesBA$onlyModerate)
   releasesBA$onlyModerate = releasesBA$onlyModerate[,c(ncol(releasesBA$onlyModerate),1:(-1+ncol(releasesBA$onlyModerate)))]
   releasesBA$onlyMajor$year=rownames(releasesBA$onlyMajor)
@@ -236,7 +276,7 @@ doAll<- function(data,m1=10,m2=10, abs.threshold=NULL, boundary=NULL, buffer=2,
   write.csv ( releasesBA$onlyMajor, paste(prefix,"_releases_Only_Major.csv", sep = ""), row.names=F)
   write.csv ( releasesBA$onlyModerate, paste(prefix,"_releases_Only_Moderate.csv", sep = ""), row.names=F)
   
-  prefix<-"sp"
+  prefix<-paste0(prefix0,"_sp")
   releasesS$onlyModerate$year=rownames(releasesS$onlyModerate)
   releasesS$onlyModerate = releasesS$onlyModerate[,c(ncol(releasesS$onlyModerate),1:(-1+ncol(releasesS$onlyModerate)))]
   releasesS$onlyMajor$year=rownames(releasesS$onlyMajor)
@@ -259,8 +299,13 @@ doAll<- function(data,m1=10,m2=10, abs.threshold=NULL, boundary=NULL, buffer=2,
 # OPTIONAL abs,abs threshold, m1, m2, buffer
 # RETURNS release table and years
 absoluteIncrease<- function(data, abs=NULL, abs.threshold=NULL, m1=10, m2=10, 
-                            buffer=2,gfun=mean, length=2) {
+                            buffer=2,gfun=mean, length=2, prefix = NULL) {
 #data<-mdata;m1=10;m2=10;buffer=4;gfun=mean;length=3; abs<-NULL;abs.threshold<-NULL
+  if ( is.null(prefix) ) {
+    prefix <- paste0(tempdir(),"/aii")
+    print ( paste0("Specify prefix parameter, or output files will be stored as ", prefix,"*") )
+  } 
+  
   print(paste("## Fraver & White analysis!"))
   if ( is.null(abs) )
     abs<-absIncrease(data,m1,m2,gfun=gfun)
@@ -320,7 +365,7 @@ absoluteIncrease<- function(data, abs=NULL, abs.threshold=NULL, m1=10, m2=10,
    
   rs<-writeReleaseStats(release_list,"Total number of releases is")
     
-  norel<-plotNORelease(data,rs, criteria=round(abs.threshold,3),prefix="relai")
+  norel<-plotNORelease(data,rs, criteria=round(abs.threshold,3),prefix=prefix)
   
   return( list("releases" = releases1,"years"=release_list, 
                "years_list_total" =norel, "pgc"=release_list_vals,
@@ -336,16 +381,27 @@ absoluteIncrease<- function(data, abs=NULL, abs.threshold=NULL, m1=10, m2=10,
 # black=TRUE -> Black and Abrams 2003
 noblabrams<-function(data=NULL,prior=NULL,change=NULL,m1=10,m2=10,boundary=NULL,
                     buffer=2,criteria=0.25,criteria2=0.5,segment=0.5,segment2=0.5,
-                 black=FALSE,gfun=mean, length=2,notop=10,notop2=10,storedev=pdf){
+                    black=FALSE,gfun=mean, length=2,notop=10,notop2=10,storedev=pdf,
+                    prefix=NULL){
   #data=mdata;prior=NULL;change=NULL;m1=10;m2=10;boundary=NULL;buffer=3;criteria=0.25;criteria2=0.5;segment=0.5;segment2=0.5;black=TRUE;gfun=mean;length=4;storedev=pdf;gfun=mean;notop=10;notop2=10
   if ( black ) {
     print(paste("## Black & Abrams analysis!"))
     print(paste("Criteria",criteria,"Criteria2",criteria2, "m1",m1,"m2",m2, 
                 "Buffer",buffer,"Length",length,"Segment",segment,"Segment2",segment2))
+    if ( is.null(prefix) ) {
+      prefix <- paste0(tempdir(),"/blab")
+      print ( paste0("Specify prefix parameter, or output files will be stored as ", prefix,"*") )
+    } 
+    
   } else{
     print(paste("## Nowacki & Abrams analysis!"))
     print(paste("Criteria",criteria,"Criteria2",criteria2, "m1",m1,"m2",m2, 
                 "Buffer",buffer,"Length",length))
+    if ( is.null(prefix) ) {
+      prefix <- paste0(tempdir(),"/noab")
+      print ( paste0("Specify prefix parameter, or output files will be stored as ", prefix,"*") )
+    } 
+    
   }
     
   if ( is.null(change) )
@@ -360,7 +416,7 @@ noblabrams<-function(data=NULL,prior=NULL,change=NULL,m1=10,m2=10,boundary=NULL,
     bo<-boundaryGet(data,prior=prior,change=change,m1=m1,m2=m2,segment=segment,
                     segment2=segment2,gfun=gfun,notop=notop,notop2=notop2)
     if ( is.null(boundary) ) {
-      bofit<-boundaryFit(bo$bo,bo$x,bo$y)
+      bofit<-boundaryFit(bo$bo,bo$x,bo$y, prefix=prefix)
       boundary<-bofit$fun
       rsq<-bofit$rsq
     } else {
@@ -368,7 +424,7 @@ noblabrams<-function(data=NULL,prior=NULL,change=NULL,m1=10,m2=10,boundary=NULL,
       rsq<-NULL
     }
     plotBoundary(bo$bo,bo$x,bo$y,boundary=boundary,rsq=rsq,criteria=criteria,
-                 criteria2=criteria2,storedev=storedev)
+                 criteria2=criteria2,storedev=storedev, prefix=prefix)
         
     scaled <- c(prior[1:length(change[,1]),1]) 
     for(i in 2:length(prior)){
@@ -464,7 +520,7 @@ noblabrams<-function(data=NULL,prior=NULL,change=NULL,m1=10,m2=10,boundary=NULL,
     mpref<-"ga"
   
   norel<-plotNORelease(data,rs,rs2, criteria=criteria, criteria2=criteria2,
-                   prefix=paste("rel",mpref,sep=""),storedev=pdf)
+                   prefix=paste(prefix,"rel",mpref,sep=""),storedev=pdf)
   
   release_list_vals <- releases3
   for ( t in 2:length(releases3) ){
@@ -496,8 +552,13 @@ noblabrams<-function(data=NULL,prior=NULL,change=NULL,m1=10,m2=10,boundary=NULL,
 # RETURNS release table, years and pgc
 splechtna<-function(data,change=NULL,prior=NULL,m1=10,m2=10,boundary=NULL,buffer=2,
                        criteria=0.2,criteria2=0.5,segment=0.5,gfun=mean, length=2, 
-                    segment2=0.5, notop=10,notop2=10,storedev=pdf){
+                    segment2=0.5, notop=10,notop2=10,storedev=pdf, prefix=NULL){
  #data=mdata;prior=NULL;change=NULL;m1=10;m2=10;boundary=NULL;buffer=2;criteria=0.25;criteria2=0.5;segment=0.2;gfun=mean;length=2
+  if ( is.null(prefix) ) {
+    prefix <- paste0(tempdir(),"/spi")
+    print ( paste0("Specify prefix parameter, or output files will be stored as ", prefix,"*") )
+  } 
+  
   print(paste("## Splechtna analysis!"))
   if ( is.null(prior) )
     prior <- priorGrowth(data, m1=m1, m2=m2,gfun=gfun) #prior growth   
@@ -532,14 +593,14 @@ splechtna<-function(data,change=NULL,prior=NULL,m1=10,m2=10,boundary=NULL,buffer
   bo<-boundaryGet(data,prior=prior,change=change,m1=m1,m2=m2,segment=segment,segment2=segment2,
                   gfun=gfun,notop=notop,notop2=notop2)
   if ( is.null(boundary) ) {
-    bofit<-boundaryFit(bo$bo,bo$x,bo$y)
+    bofit<-boundaryFit(bo$bo,bo$x,bo$y, prefix=prefix)
     boundary<-bofit$fun
     rsq<-bofit$rsq
   } else {    
     rsq<-NULL
   }
   plotBoundary(bo$bo,bo$x,bo$y,boundary=boundary,rsq=rsq,criteria=criteria,
-               criteria2=criteria2,storedev=storedev)
+               criteria2=criteria2,storedev=storedev, prefix=prefix)
   
   scaled <- c(prior[1:length(change[,1]),1]) 
   for(i in 2:length(prior)){
@@ -607,7 +668,8 @@ splechtna<-function(data,change=NULL,prior=NULL,m1=10,m2=10,boundary=NULL,buffer
                                             "& <",criteria2,"is"))
   rs2<-writeReleaseStats(release_list42,paste("Total number of releases >=",criteria2,"is"))
   
-  norel<-plotNORelease(data,rs,rs2, criteria=criteria, criteria2=criteria2,prefix="relsp",storedev=pdf)
+  norel<-plotNORelease(data,rs,rs2, criteria=criteria, criteria2=criteria2,
+                       prefix=paste0(prefix,"relsp"),storedev=pdf)
   
   inyears<-unlist(release_list4)
   inyears<-inyears[inyears!=0]
@@ -1001,9 +1063,14 @@ boundaryGet<-function(data,prior=NULL,change=NULL,m1=10,m2=10,segment=0.5,segmen
 # NEEDS boundaries
 # RETURNS boundary line as function, rsq and the best model
 # morefun determines usage of more fitting function
-boundaryFit<- function(boundaries,x,y,boundary=NULL,prefix="bo",store=TRUE,
-                       storedev=pdf,initNLS=NULL){
+boundaryFit<- function(boundaries,x,y,boundary=NULL,store=TRUE,
+                       storedev=pdf,initNLS=NULL,prefix=NULL){
   #x<-bo$x;y<-bo$y;boundaries<-bo$bo; store=FALSE
+  if ( is.null(prefix) ) {
+    prefix <- paste0(tempdir(),"/boi")
+    print ( paste0("Specify prefix parameter, or output files will be stored as ", prefix,"*") )
+  } 
+  
   
   doto<-which(boundaries$tops <0)[1]
   doto<-ifelse(is.na(doto),dim(boundaries)[1],doto)
@@ -1173,7 +1240,7 @@ boundaryFit<- function(boundaries,x,y,boundary=NULL,prefix="bo",store=TRUE,
   
   
   if(store){
-    write.csv(boundaries, "boundaries.csv", row.names=F)
+    write.csv(boundaries, paste0(prefix,"_boundaries.csv"), row.names=F)
     mycol<-rainbow(length(fr2))
     
     storedev(paste(prefix,"_boundaries.",deparse(substitute(storedev)),sep=""))
@@ -1275,7 +1342,12 @@ plotRelease<-function(data, abs, rel, treeno=1, method = "FraverWhite",
                          type="l", xlab=NULL, ylab = NULL, main=NULL, col = c("black","lightblue"),
                          addHLinesCol = c("olivedrab","red","darkblue"), addHLines = c(NULL, NULL, NULL),
                          addHLinesText = c("","",""), smallcex= 0.85, plotfirst=TRUE, plotpoints=FALSE,
-                         ...) {
+                         store=TRUE,storedev=pdf,prefix=NULL, ...) {
+  if ( is.null(prefix) ) {
+    prefix <- paste0(tempdir(),"/plotRel")
+    print ( paste0("Specify prefix parameter, or output files will be stored as ", prefix,"*") )
+  } 
+  
   if (method == "FraverWhite" ) {
     if ( is.null(ylab) )
       ylab <- "absolute increase [mm]"
@@ -1307,6 +1379,11 @@ plotRelease<-function(data, abs, rel, treeno=1, method = "FraverWhite",
   
   if ( is.null(xlab) )
     xlab <- "years"
+  
+  if (deparse(substitute(storedev)) =="storedev")
+    storedev<-pdf
+  if (store)
+    pdf(paste(prefix,"_release.pdf",sep=""))
   
   par(mar = c(5.1,4.1,4.1,5.1))
   # plot data
@@ -1354,16 +1431,26 @@ plotRelease<-function(data, abs, rel, treeno=1, method = "FraverWhite",
       abline(v = rel$years[[treeno]][t], lty = "dotted")
       text(rel$years[[treeno]][t]-5, -0.3, rel$years[[treeno]][t], srt = 90, cex=smallcex)
     }
-  } else
-    print( paste("No release data for",names(data)[treeno]) )
+  } else {
+      print( paste("No release data for",names(data)[treeno]) )
+  }
+  if (store)
+    dev.off()
 }
 
 # returns boundary function
 # NEEDS boundaries
 # RETURNS plot the best of given boundary line
-plotBoundary<- function(boundaries,x,y,boundary,rsq=NULL,prefix="bo",criteria=0.2,criteria2=0.5,
-                        store=TRUE,storedev=pdf){
+plotBoundary<- function(boundaries,x,y,boundary,rsq=NULL,criteria=0.2,criteria2=0.5,
+                        store=TRUE,storedev=pdf,prefix=NULL){
   #x<-bo$x;y<-bo$y; boundaries<-bo$bo;boundary=bo2$fun;criteria=0.2;criteria2=0.5;store=TRUE
+  
+  if ( is.null(prefix) ) {
+    prefix <- paste0(tempdir(),"/bo")
+    print ( paste0("Specify prefix parameter, or output files will be stored as ", prefix,"*") )
+  } 
+  
+  
   if (deparse(substitute(storedev)) =="storedev")
     storedev<-pdf
   if (store)
@@ -1398,15 +1485,20 @@ plotBoundary<- function(boundaries,x,y,boundary,rsq=NULL,prefix="bo",criteria=0.
   if ( ! is.null(rsq) )
     mtext(paste("R2=",round(rsq,3)," ") ,side = 3, line = -5, adj=1)
   
-  if (store)
-    dev.off()
+  #if (store)
+  dev.off()
 }
   
 # returns plot of releases
 # NEEDS data and releases
 # RETURNS plot total releases and number of trees
-plotNORelease<-function(data,inyears,in2years=NULL,criteria,criteria2=NULL,prefix="rel",
-                        store=TRUE,storedev=pdf){
+plotNORelease<-function(data,inyears,in2years=NULL,criteria,criteria2=NULL,
+                        store=TRUE,storedev=pdf, prefix=NULL){
+  if ( is.null(prefix) ) {
+    prefix <- paste0(tempdir(),"/rel")
+    print ( paste0("Specify prefix parameter, or output files will be stored as ", prefix,"*") )
+  } 
+  
   #data<-mdata;inyears<-rs;in2years<-rs2;criteria=0.2;criteria2<-0.5;store=F
   notrees<-rowSums(data>0,na.rm=T)
   
@@ -1428,7 +1520,7 @@ plotNORelease<-function(data,inyears,in2years=NULL,criteria,criteria2=NULL,prefi
   # change solve problem with >100% abdif<-round((ab*100)/abtot,2)
   
   if (store)
-    storedev(paste(prefix,"_inyears.",deparse(substitute(storedev)),sep=""))
+    storedev( paste(prefix,"_inyears.",deparse(substitute(storedev)),sep="") )
   
   par(mar = c(5.1,4.1,4.1,5.1))
   plot(c(min(abdif),max(abdif))~c(myxlim[1],myxlim[2]),xlim=myxlim, xlab="years",ylab="% of trees with release",type='n')
@@ -1449,8 +1541,8 @@ plotNORelease<-function(data,inyears,in2years=NULL,criteria,criteria2=NULL,prefi
   else
     mtext(paste(" ",">",criteria," ",sep=""), side = 3, line = -1, adj=0)
   
-  if (store)
-    dev.off()
+  #if (store)
+  dev.off()
   
   if (!  is.null(in2years) ) {
     btotret<-ab
@@ -1469,7 +1561,12 @@ plotNORelease<-function(data,inyears,in2years=NULL,criteria,criteria2=NULL,prefi
 # returns plot of growth of inidvidual tree
 # NEEDS data 
 # RETURNS plot growth and polynom
-plotGrowth<-function(data=NULL,prefix="growth", polynom=4, store=TRUE,storedev=pdf, ...){
+plotGrowth<-function(data=NULL,polynom=4, store=TRUE,storedev=pdf, prefix=NULL, ...){
+  if ( is.null(prefix) ) {
+    prefix <- paste0(tempdir(),"/growth")
+    print ( paste0("Specify prefix parameter, or output files will be stored as ", prefix,"*") )
+  } 
+  
   if(is.null(data)){
     return(paste("Data must be specified as argument!"))
   }
@@ -1486,8 +1583,8 @@ plotGrowth<-function(data=NULL,prefix="growth", polynom=4, store=TRUE,storedev=p
     fpoly<-lm(mtree~poly(as.numeric(rownames(data)[!treena]),polynom))  
     lines(as.numeric(rownames(data)[!treena]),predict(fpoly),lwd=2 )
     
-    if (store)
-      dev.off()
+    #if (store)
+    dev.off()
   }  
 }
 
@@ -1496,8 +1593,13 @@ plotGrowth<-function(data=NULL,prefix="growth", polynom=4, store=TRUE,storedev=p
 # NEEDS dplr data, misspith
 # RETURNS list of first year for each tree
 plotFirstYears <- function(data=NULL, misspith=NULL,store=TRUE,storedev=pdf,
-                           prefix="fy",...){
+                           prefix=NULL, ...){
   # data<-mdata;store=FALSE
+  if ( is.null(prefix) ) {
+    prefix <- paste0(tempdir(),"/fy")
+    print ( paste0("Specify prefix parameter, or output files will be stored as ", prefix,"*") )
+  } 
+  
   if(is.null(data)){
     return(paste("Data must be specified as argument!"))
   }
@@ -1526,17 +1628,18 @@ plotFirstYears <- function(data=NULL, misspith=NULL,store=TRUE,storedev=pdf,
   write.csv(firsty,paste(prefix,"_firstyears.csv",sep=""),row.names=F)
   
   if(store) {
-    storedev(paste(prefix,"firstyears.",deparse(substitute(storedev)),sep=""),pointsize = 10,...)
-    write.csv(data.frame(sum=rowSums(wdata>0,na.rm=T),year=rownames(wdata)),"firstyear.csv",
+    storedev(paste(prefix,"_firstyears.",deparse(substitute(storedev)),sep=""),pointsize = 10,...)
+    write.csv(data.frame(sum=rowSums(wdata>0,na.rm=T),year=rownames(wdata)),
+              paste0(prefix,"_firstyear.csv"),
                 row.names=F)
   }
   
-  plot(rowSums(wdata>0,na.rm=T)~rownames(wdata),xlab="years",ylab="sample depth",type='l')
+  plot(rowSums(wdata>0,na.rm=T)~rownames(wdata),xlab="years",ylab="sample depth",type='l', ...)
   if ( ! is.null(misspith)) {
     lines(rownames(data),rowSums(data>0,na.rm=T),lty=2)
     legend("topleft",c("with missing rings","based on first measured year"),lty=c(1,2))
   }
   
-  if(store)
-    dev.off()  
+  #if(store)
+  dev.off()  
 }

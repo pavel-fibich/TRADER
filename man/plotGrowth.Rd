@@ -8,8 +8,8 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-plotGrowth(data = NULL, prefix = "growth", polynom = 4, 
-  store = TRUE, storedev = pdf, ...)
+plotGrowth(data = NULL, polynom = 4, store = TRUE, storedev = pdf, 
+            prefix=NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -61,5 +61,5 @@ plotGrowth(relData1)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ release }
+

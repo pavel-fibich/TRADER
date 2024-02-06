@@ -8,8 +8,9 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-plotBoundary(boundaries, x, y, boundary, rsq = NULL, prefix = "bo", 
-  criteria = 0.2, criteria2 = 0.5, store = TRUE, storedev = pdf)
+plotBoundary(boundaries, x, y, boundary, rsq = NULL, 
+  criteria = 0.2, criteria2 = 0.5, store = TRUE, storedev = pdf,
+  prefix = NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -28,9 +29,6 @@ plotBoundary(boundaries, x, y, boundary, rsq = NULL, prefix = "bo",
   \item{rsq}{R square of the fit.
 %%     ~~Describe \code{rsq} here~~
 }
-  \item{prefix}{Prefix of saved files.
-%%     ~~Describe \code{prefix} here~~
-}
   \item{criteria}{Threshold for detection of moderate release
 %%     ~~Describe \code{criteria} here~~
 }
@@ -42,6 +40,9 @@ plotBoundary(boundaries, x, y, boundary, rsq = NULL, prefix = "bo",
 }
   \item{storedev}{Format for saving the graphical outputs, eg. pdf or jpeg.
 %%     ~~Describe \code{storedev} here~~
+}
+\item{prefix}{Prefix of saved files.
+%%     ~~Describe \code{length} here~~
 }
 }
 \details{Boundary-line method scales the  percent growth change of Nowacki & Abrams (1997) according to growth rate prior to disturbance. In their example, Black & Abrams (2003) defined moderate and major releases as those falling within 20-49.9\%, and 50-100\% of the boundary line, respectively. Advantage of the boundary-line is standardization, which takes into account the relationships among tree age, size, and canopy class determining radial growth rate (Black et al. 2004). On the downside, Black et al. (2009) suggest approximately 50000 ring width measurements is necessary for boundary line determination for a given species (Black et al. 2009).
@@ -78,5 +79,5 @@ plotBoundary(bo$bo,bo$x,bo$y,boundary=bofit$fun,rsq=bofit$rsq)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ boundary line }
+\keyword{ release }% __ONLY ONE__ keyword per line

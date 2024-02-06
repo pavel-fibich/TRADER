@@ -10,7 +10,7 @@ Barplot number of releases according given criteria.
 }
 \usage{
 plotNORelease(data, inyears, in2years = NULL, criteria, criteria2 = NULL, 
-  prefix = "rel", store = TRUE, storedev = pdf)
+  store = TRUE, storedev = pdf, prefix = NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -73,9 +73,9 @@ fw <- absoluteIncrease(relData1,abs,abs.threshold)
 
 release_list <- reduceByLB(releases=fw$releases,above=fw$all_releases,type=1)
 rs<-writeReleaseStats(release_list,"Total number of releases is")
-plotNORelease(relData1,rs, criteria=round(abs.threshold,3),prefix="relai")
+plotNORelease(relData1,rs, criteria=round(abs.threshold,3) )
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ release }
+

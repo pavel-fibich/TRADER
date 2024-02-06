@@ -13,8 +13,8 @@ doAll(data, m1 = 10, m2 = 10, abs.threshold = NULL, boundary = NULL, buffer = 2,
   criteriaNA = 0.2, criteria2NA = 0.5, 
   criteriaBA = 0.2, criteria2BA = 0.5, segmentBA = 0.5, segment2BA = 0.5,
   criteriaS = 0.2, criteria2S = 0.5, segmentS = 0.5, segment2S = 0.5,
-  prefix = "all", gfun = mean, length = 2, notop = 10, notop2 = 10, 
-  storedev = pdf, drawing=TRUE,...)
+  gfun = mean, length = 2, notop = 10, notop2 = 10, 
+  storedev = pdf, drawing=TRUE, prefix = NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -127,9 +127,12 @@ Check reference.
 }
 \examples{
 data(relData)
-doAll(relData1,length=5,stodev=pdf)
+\donttest{ doAll(relData1,length=5,stodev=pdf) }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ growth averaging }
+\keyword{ release }% __ONLY ONE__ keyword per line
+\keyword{ splechtna}
+\keyword{ treering}
+\keyword{ boundary line}

@@ -15,17 +15,17 @@ There is a split of behaviour of this function according parameter \code{black}.
 noblabrams(data = NULL, prior = NULL, change = NULL, m1 = 10, m2 = 10, 
   boundary = NULL, buffer = 2, criteria = 0.25, criteria2 = 0.5, 
   segment = 0.5, segment2 = 0.5, black = FALSE, gfun = mean, length = 2, 
-  notop = 10, notop2 = 10, storedev = pdf)
+  notop = 10, notop2 = 10, storedev = pdf, prefix = NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{data}{A data.frame with series as columns and years as rows such as that produced by read.* function of dplR .
 %%     ~~Describe \code{data} here~~
 }
-  \item{prior}{
+  \item{prior}{(optional) prior growth computed by priorGrowth function.
 %%     ~~Describe \code{prior} here~~
 }
-  \item{change}{
+  \item{change}{(optional) percent growth change computed by PGC function.
 %%     ~~Describe \code{change} here~~
 }
   \item{m1}{Determines the number of years to be averaged (including target year) for period prior the potential releas.
@@ -70,6 +70,9 @@ noblabrams(data = NULL, prior = NULL, change = NULL, m1 = 10, m2 = 10,
   \item{storedev}{Format for saving the graphical outputs, eg. pdf or jpeg.
 %%     ~~Describe \code{storedev} here~~
 }
+\item{prefix}{Prefix of saved files.
+%%     ~~Describe \code{length} here~~
+}
 }
 
 \value{Return list object with
@@ -109,10 +112,9 @@ data(relData)
 rna<-noblabrams(relData1,black=FALSE) # for Nowacki and Abrams 1997
 rba<-noblabrams(relData1,black=TRUE) # Black and Abrams 2003
 
-plotRelease(relData1,rna$change,rna, 1, method="NowackiAbrams",addHLines=c(0.2))
-plotRelease(relData1,rba$change,rba, 1, method="BlackAbrams",addHLines=c(0.2,0.5))
+\donttest{ plotRelease(relData1,rna$change,rna, 1, method="NowackiAbrams",addHLines=c(0.2))}
+\donttest{ plotRelease(relData1,rba$change,rba, 1, method="BlackAbrams",addHLines=c(0.2,0.5))}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ abrams }

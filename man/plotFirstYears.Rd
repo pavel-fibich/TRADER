@@ -9,7 +9,7 @@
 }
 \usage{
 plotFirstYears(data = NULL, misspith = NULL, store = TRUE, 
-  storedev = pdf, prefix="fy", ...)
+  storedev = pdf, prefix=NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -28,7 +28,7 @@ plotFirstYears(data = NULL, misspith = NULL, store = TRUE,
   \item{prefix}{Prefix of saved files.
 %%     ~~Describe \code{prefix} here~~
 }
-  \item{\dots}{
+  \item{\dots}{Further arguments pasted to plot function.
 %%     ~~Describe \code{\dots} here~~
 }
 }
@@ -66,5 +66,5 @@ plotFirstYears(relData1,relMissPith)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ release }
+

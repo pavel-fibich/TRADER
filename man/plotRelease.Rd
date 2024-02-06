@@ -13,7 +13,8 @@ plotRelease(data, abs, rel, treeno = 1, method = "FraverWhite",
   col = c("black", "lightblue"), 
   addHLinesCol = c("olivedrab", "red", "darkblue"), 
   addHLines = c(NULL, NULL, NULL), addHLinesText = c("", "", ""), 
-  smallcex = 0.85, plotfirst = TRUE, plotpoints = FALSE, ...)
+  smallcex = 0.85, plotfirst = TRUE, plotpoints = FALSE, 
+  store=TRUE, storedev=pdf, prefix=NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -65,7 +66,16 @@ plotRelease(data, abs, rel, treeno = 1, method = "FraverWhite",
   \item{plotpoints}{If to plot points on the top of releases.
 %%     ~~Describe \code{plotpoints} here~~
 }
-  \item{\dots}{
+  \item{store}{If to save results on files.
+%%     ~~Describe \code{store} here~~
+}
+  \item{storedev}{Format for saving the graphical outputs, eg. pdf or jpeg.
+%%     ~~Describe \code{storedev} here~~
+}
+  \item{prefix}{Prefix of saved files.
+%%     ~~Describe \code{prefix} here~~
+}
+  \item{\dots}{Further arguments pasted to plot function.
 %%     ~~Describe \code{\dots} here~~
 }
 }
@@ -108,5 +118,7 @@ plotRelease(relData1,rba$change,rba, 1, method="BlackAbrams",addHLines=c(0.2,0.5
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ splechtna }
+\keyword{ boundary line}
+\keyword{treering}
+

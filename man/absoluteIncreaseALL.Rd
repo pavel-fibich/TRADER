@@ -10,8 +10,8 @@
 }
 \usage{
 absoluteIncreaseALL(data, abs = NULL, abs.threshold = NULL, 
-  m1 = 10, m2 = 10, buffer = 2, prefix = "ai", drawing = TRUE, 
-  gfun = mean, length = 2, storedev = pdf, ...)
+  m1 = 10, m2 = 10, buffer = 2, drawing = TRUE, 
+  gfun = mean, length = 2, storedev = pdf, prefix = NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -43,10 +43,10 @@ absoluteIncreaseALL(data, abs = NULL, abs.threshold = NULL,
   \item{length}{Determines how many years have to be given critera exceeded to be considered as release.
 %%     ~~Describe \code{length} here~~
 }
-  \item{storedev}{
+  \item{storedev}{Format for saving the graphical outputs, eg. pdf or jpeg.
 %%     ~~Describe \code{storedev} here~~
 }
-  \item{\dots}{
+  \item{\dots}{Further arguments pasted to plot function.
 %%     ~~Describe \code{\dots} here~~
 }
 }
@@ -84,5 +84,5 @@ absoluteIncreaseALL(relData1,length=3,buffer=4,storedev=pdf)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ absolute increase }
+

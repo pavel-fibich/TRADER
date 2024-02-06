@@ -1,11 +1,15 @@
 Package: TRADER
 Type: Package
 Title: Tree Ring Analysis of Disturbance Events in R 
-Version: 1.2-3
-Date: 2017-01-13
-Author: Pavel Fibich <pavel.fibich@prf.jcu.cz>, Jan Altman <altman.jan@gmail.com>, Tuomas Aakala <tuomas.aakala@helsinki.fi>, Jiri Dolezal <jiriddolezal@gmail.com>
+Version: 1.2-4
+Date: 2024-02-06
+Authors@R: c(person("Pavel","Fibich",role = c("aut","cre"), email = "pavel.fibich@prf.jcu.cz"),
+            person("Jan","Altman",role = c("aut"), email="altman.jan@gmail.com"),
+            person("Tuomas","Aakala",role = c("aut"), email="tuomas.aakala@helsinki.fi"),
+            person("Jiri","Dolezal",role = c("aut"), email="jiriddolezal@gmail.com") )
+Author: Pavel Fibich [aut, cre], Jan Altman [aut], Tuomas Aakala [aut], Jiri Dolezal [aut]            
 Maintainer: Pavel Fibich <pavel.fibich@prf.jcu.cz>
-Description: Tree Ring Analysis of Disturbance Events in R (TRADER) package provides only one way for disturbance reconstruction from tree-ring data.
+Description: Tree Ring Analysis of Disturbance Events in R (TRADER) package provides functions for disturbance reconstruction from tree-ring data, e.g. boundary line, absolute increase, growth averaging methods.
 License: GPL-2 | GPL-3
 URL: https://github.com/pavel-fibich/TRADER
 Imports: dplR

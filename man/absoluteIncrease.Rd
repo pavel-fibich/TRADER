@@ -10,7 +10,8 @@
 }
 \usage{
 absoluteIncrease(data, abs = NULL, abs.threshold = NULL, 
-  m1 = 10, m2 = 10, buffer = 2, gfun = mean, length = 2)
+  m1 = 10, m2 = 10, buffer = 2, gfun = mean, length = 2,
+  prefix = NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -36,6 +37,9 @@ absoluteIncrease(data, abs = NULL, abs.threshold = NULL,
 %%     ~~Describe \code{gfun} here~~
 }
   \item{length}{Determines how many years have to be given critera exceeded to be considered as release.
+%%     ~~Describe \code{length} here~~
+}
+  \item{prefix}{Prefix of saved files.
 %%     ~~Describe \code{length} here~~
 }
 }
@@ -76,9 +80,9 @@ data(relData)
 abs<-absIncrease(relData1)
 mabs.threshold<- absTreshold(abs)
 fw <- absoluteIncrease(relData1,abs,mabs.threshold)
-plotRelease(relData1,abs,fw, 1, method="FraverWhite")
+\donttest{ plotRelease(relData1,abs,fw, 1, method="FraverWhite") }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ absolute increase }
+

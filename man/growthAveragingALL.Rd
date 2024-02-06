@@ -11,7 +11,7 @@
 \usage{
 growthAveragingALL(data, releases = NULL, m1 = 10, m2 = 10, 
   buffer = 2, drawing = TRUE, criteria = 0.25, criteria2 = 0.5, 
-  prefix = "ga", gfun = mean, length = 2, storedev = pdf, ...)
+  gfun = mean, length = 2, storedev = pdf, prefix = NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -50,7 +50,7 @@ growthAveragingALL(data, releases = NULL, m1 = 10, m2 = 10,
   \item{storedev}{Format for saving the graphical outputs, eg. pdf or jpeg.
 %%     ~~Describe \code{storedev} here~~
 }
-  \item{\dots}{
+  \item{\dots}{Further arguments pasted to plot function.
 %%     ~~Describe \code{\dots} here~~
 }
 }
@@ -78,9 +78,9 @@ Radial-growth averaging criteria developed by Nowacki & Abrams (1997) is one of 
 \examples{
 data(relData)
 growthAveragingALL(relData1)
-growthAveragingALL(relData1,length=3,buffer=4,storedev=pdf)
+\donttest{ growthAveragingALL(relData1,length=3,buffer=4,storedev=pdf) }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ release }
+\keyword{ growth averaging }% __ONLY ONE__ keyword per line

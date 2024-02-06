@@ -38,3 +38,5 @@ knownBL
 plotFirstYears(relData1)
 }
 \keyword{datasets}
+\keyword{disturbances}
+\keyword{treerings}

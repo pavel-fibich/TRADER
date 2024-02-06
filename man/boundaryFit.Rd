@@ -4,8 +4,8 @@
 \title{Fit multiple boundary lines.}
 \description{Fit multiple boundary lines, write their results and choose the best one.}
 \usage{
-boundaryFit(boundaries, x, y, boundary = NULL, prefix = "bo", 
-  store = TRUE, storedev = pdf, initNLS = NULL)
+boundaryFit(boundaries, x, y, boundary = NULL, 
+  store = TRUE, storedev = pdf, initNLS = NULL, prefix = NULL)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -44,11 +44,11 @@ data(relData)
 bo<-boundaryGet(relData1)
 bofit<-boundaryFit(bo$bo,bo$x,bo$y)
 
-plotBoundary(bo$bo,bo$x,bo$y,boundary=bofit$fun,rsq=bofit$rsq)
-plotBoundary(bo$bo,bo$x,bo$y,boundary=function(x) {5.0067*exp(-0.664*x)})
+\donttest{ plotBoundary(bo$bo,bo$x,bo$y,boundary=bofit$fun,rsq=bofit$rsq) }
+\donttest{ plotBoundary(bo$bo,bo$x,bo$y,boundary=function(x) {5.0067*exp(-0.664*x)}) }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ boundary line }
+\keyword{ release }% __ONLY ONE__ keyword per line
   

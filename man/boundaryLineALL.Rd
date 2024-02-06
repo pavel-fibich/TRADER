@@ -10,8 +10,8 @@
 \usage{
 boundaryLineALL(data, releases = NULL, m1 = 10, m2 = 10, boundary = NULL, 
   buffer = 2, criteria = 0.2, criteria2 = 0.5, segment = 0.5, 
-  segment2 = 0.5, prefix = "bl", drawing = TRUE, gfun = mean, 
-  length = 2, notop = 10, notop2 = 10, storedev = pdf, ...)
+  segment2 = 0.5, drawing = TRUE, gfun = mean, 
+  length = 2, notop = 10, notop2 = 10, storedev = pdf, prefix = NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -66,7 +66,7 @@ boundaryLineALL(data, releases = NULL, m1 = 10, m2 = 10, boundary = NULL,
   \item{storedev}{Format for saving the graphical outputs, eg. pdf or jpeg.
 %%     ~~Describe \code{storedev} here~~
 }
-  \item{\dots}{
+  \item{\dots}{Further arguments pasted to plot function.
 %%     ~~Describe \code{\dots} here~~
 }
 }
@@ -103,10 +103,10 @@ Check reference.
 \examples{
 data(relData)
 boundaryLineALL(relData1)
-boundaryLineALL(relData1,length=3,buffer=4,storedev=pdf,
-  boundary=function(x) {5.0067*exp(-0.664*x)} )
+\donttest{ boundaryLineALL(relData1,length=3,buffer=4,storedev=pdf,
+  boundary=function(x) {5.0067*exp(-0.664*x)} ) }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ release }
+\keyword{ boundary line }% __ONLY ONE__ keyword per line
