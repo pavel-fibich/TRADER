@@ -850,125 +850,82 @@ reduceByLB<-function(releases, above, buffer=2, type=1, length=2,val=NULL){
   }
   
   release_list <- ( rep(list(0),length(releases)-1) )
-  if ( is.null(val)){    
-    if ( type==1 ){ # type =1 years
-      for(i in 2:length(releases)){                       
-        #temp<-append(c(0,0), releases[,1][!is.na(releases[,i])] )    
-        #temp2<-temp[ temp-c(0,temp[-c(length(temp))]) >=buffer]        
-        temp<-releases[,1][!is.na(releases[,i])]
-        if (length(temp)>0) {
-          temp2<-append(c(),temp[1])
-          if ( length(temp) > 1){
-            for( r in 2:length(temp) ){
-              tdif<- temp[r] - temp2[length(temp2)]
-              if ( tdif >= buffer ) { # difference big enough
-                temp2<-append(temp2,temp[r])
-              } else if ( sum ( !is.na(above[ 
-                grep(temp2[length(temp2)],above[,1])[1]:grep(temp[r],above[,1])[1]
-                  ,i ])) == (tdif+1) ) {# is continuous
-                if ( above[grep(temp2[length(temp2)],above[,1])[1],i] 
-                   < above[grep(temp[r],above[,1],above[,1])[1],i] ) {
-                  temp2[length(temp2)] <- temp[r]
-                }                 
-              }
-            }
-          }
-        } else
-          temp2<-c()        
-        
-        temp3<-c()
-        for (f in temp2 ){
-          index<-grep(f,above[,1])[1]
-          if (sum(!is.na(above[ max(1,index-length+1):min(dim(above)[1],index+length-1),i])) >=length)
-            temp3<-append(temp3,f)
-        }
-        release_list[[i-1]] <- append(release_list[[i-1]], temp3 )      
+  for(i in 2:length(releases)){  
+    # reduce by continuous length
+    temp<-which( !is.na(above[-c(1),i]) & !is.na(releases[,i]) )
+    temp2<-c()
+    if (length(temp)>0) for( r in 1:length(temp) ){
+      tempOne<-temp[r]+1 # peak of release
+      iiu<-tempOne 
+      while( (!is.na(above[iiu+1 ,i])) & (iiu < nrow(above)) ) iiu<-iiu+1
+      iil<-tempOne
+      while( (!is.na(above[iil-1 ,i])) & (iil > 1) ) iil<-iil-1
+      # continuous non NA value between iil - iiu
+      if ( (iiu-iil+1) >= length ){
+        temp2 <- c(temp2,temp[r])
       }
-    } else { # type =2 values
-        for(i in 2:length(releases)){                   
-          #temp<-append(c(0,0), releases[,1][!is.na(releases[,i])] ) 
-          #tempVal<-append(c(0,0), releases[,i][!is.na(releases[,i])] ) 
-          #temp2<-temp[ temp-c(0,temp[-c(length(temp))]) >=buffer]
-          #temp2Val<-tempVal[ temp-c(0,temp[-c(length(temp))]) >=buffer]
-          
-          temp<-releases[,1][!is.na(releases[,i])]
-          tempVal<-releases[,i][!is.na(releases[,i])]
-          if (length(temp)>0) {
-            temp2<-append(c(),temp[1])
-            temp2Val<-append(c(),tempVal[1])
-            if ( length(temp) > 1){
-              for( r in 2:length(temp) ){
-                tdif<- temp[r] - temp2[length(temp2)]
-                if ( tdif >= buffer ) { # difference big enough
-                  temp2<-append(temp2,temp[r])
-                  temp2Val<-append(temp2Val,tempVal[r])
-                } else if ( sum ( !is.na(above[ 
-                  grep(temp2[length(temp2)],above[,1])[1]:grep(temp[r],above[,1])[1]
-                  ,i ])) == (tdif+1) ) {# is continuous
-                  if ( above[grep(temp2[length(temp2)],above[,1])[1],i] 
-                       < above[grep(temp[r],above[,1],above[,1])[1],i] ) { # further is biger
-                    temp2[length(temp2)] <- temp[r]
-                    temp2Val[length(temp2Val)] <- tempVal[r]
-                  }                 
-                }
-              }
+    }
+    temp3<-c()
+    # reduce by buffer
+    if ( length(temp2)==1) {
+      temp3<-temp2
+    } else if ( length(temp2) >1) {
+      refoc=NULL
+      onrels <-1:(length(temp2)-1)
+      doOverlap<-FALSE # withing buffer overlap check
+      for( r in onrels ){
+        re1<-temp2[r]
+        refoc<-ifelse(is.null(refoc),re1,refoc)
+        re2<-temp2[r+1]
+        # check if they are within buffer
+        if ( as.numeric(above[re2+1,1]) - 
+             as.numeric(above[refoc+1,1])>=buffer ) {
+          # non overlapping
+          if ( which(r==onrels) == length(onrels) ) {
+            # the last pair
+            if (doOverlap){
+              temp3<-c(temp3,re2)
+            } else {
+              temp3<-c(temp3,refoc,re2)
             }
           } else {
-            temp2<-c()            
-            temp2Val<-c()            
+            # not the last pair
+            temp3<-c(temp3,refoc)
           }
-                    
-          temp3<-c()
-          for (f in temp2 ){
-            index<-grep(f,above[,1])[1]
-            if (sum(!is.na(above[max(1,index-length+1):min(dim(above)[1],index+length-1),i])) >=length)
-              temp3<-append(temp3,f)
-          }
-          
-          release_list[[i-1]] <- append(release_list[[i-1]], temp2Val[temp2 %in% temp3] )
-        }
-    }    
-  } else{ # get values from val
-    for(i in 2:length(releases)){                   
-      #temp<-append(c(0,0), releases[,1][!is.na(releases[,i])] ) 
-      #tempVal<-append(c(0,0), val[,i][!is.na(releases[,i])] ) 
-      #temp2<-temp[ temp-c(0,temp[-c(length(temp))]) >=buffer]
-      #temp2Val<-tempVal[ temp-c(0,temp[-c(length(temp))]) >=buffer]
-      
-      temp<-releases[,1][!is.na(releases[,i])]
-      tempVal<-val[,i][!is.na(releases[,i])]
-      if (length(temp)>0) {
-        temp2<-append(c(),temp[1])
-        temp2Val<-append(c(),tempVal[1])
-        if ( length(temp) > 1){
-          for( r in 2:length(temp) ){
-            tdif<- temp[r] - temp2[length(temp2)]
-            if ( tdif >= buffer ) { # difference big enough
-              temp2<-append(temp2,temp[r])
-              temp2Val<-append(temp2Val,tempVal[r])
-            } else if ( sum ( !is.na(above[ 
-              grep(temp2[length(temp2)],above[,1])[1]:grep(temp[r],above[,1])[1]
-              ,i ])) == (tdif+1) ) {# is continuous
-              if ( above[grep(temp2[length(temp2)],above[,1])[1],i] 
-                   < above[grep(temp[r],above[,1],above[,1])[1],i] ) { # further is biger
-                temp2[length(temp2)] <- temp[r]
-                temp2Val[length(temp2Val)] <- tempVal[r]
-              }                 
+          refoc<-re2
+          doOverlap<-FALSE
+        } else {
+          # overlapping - take max
+          if ( above[refoc+1,i]> above[re2+1,i] ) {
+            if (doOverlap){
+              temp3<-c(temp3)
+            } else {
+              temp3<-c(temp3,refoc)
             }
+          } else{
+            if (length(temp3)==0) {
+              temp3<-re2
+            } else {
+              if (doOverlap){
+                temp3[length(temp3)] <- re2
+              } else {
+                temp3<-c(temp3,re2)
+              }
+            }
+            refoc<-re2
           }
+          doOverlap<-TRUE
         }
-      } else {
-        temp2<-c()            
-        temp2Val<-c()            
       }
-      
-      temp3<-c()
-      for (f in temp2 ){
-        index<-grep(f,above[,1])[1]
-        if (sum(!is.na(above[max(1,index-length+1):min(dim(above)[1],index+length-1),i])) >=length)
-          temp3<-append(temp3,f)
+    }
+    if ( is.null(val)){
+      if ( type==2 ){ # type =2 values
+        release_list[[i-1]] <- append(release_list[[i-1]], above[temp3+1,i] )      
+      } else { # type =1 years
+        release_list[[i-1]] <- append(release_list[[i-1]], above[temp3+1,1] )      
       }
-      release_list[[i-1]] <- append(release_list[[i-1]], temp2Val[temp2 %in% temp3] )
+    } else {
+      release_list[[i-1]] <- append(release_list[[i-1]], val[temp3+1,i] )      
     }
   }
   return(release_list)
