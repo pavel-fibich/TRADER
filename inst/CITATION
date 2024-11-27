@@ -3,15 +3,15 @@ bibentry(bibtype = "Article",
   author       = c(person("Jan", "Altman"), person("Pavel","Fibich"),person("Jiri","Dolezal"),
                 person("Tuomas Aakala")),
   journal      = "Dendrochonologia",
+  doi          = {10.1016/j.dendro.2014.01.004},
   year         = "2014",
   volume       = "32",
   number       = "2",
   pages        = "107--112",
-  url          = "https://www.sciencedirect.com/science/article/pii/S1125786514000058",
+  url          = {https://doi.org/10.1016/j.dendro.2014.01.004},
 
   textVersion  =
   paste("Altman J, Fibich P, Dolezal J & Aakala T (2014).",
         "TRADER: a package for Tree Ring Analysis of Disturbance Events in R.",
-        "Dendrochonologia 32: 107-112, ",
-        "URL https://www.sciencedirect.com/science/article/pii/S1125786514000058 .")
+        "Dendrochonologia 32: 107-112.")
 )
