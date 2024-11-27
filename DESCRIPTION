@@ -2,7 +2,7 @@ Package: TRADER
 Type: Package
 Title: Tree Ring Analysis of Disturbance Events in R 
 Version: 1.2-5
-Date: 2024-02-06
+Date: 2024-11-27
 Authors@R: c(person("Pavel","Fibich",role = c("aut","cre"), email = "pavel.fibich@prf.jcu.cz"),
             person("Jan","Altman",role = c("aut"), email="altman.jan@gmail.com"),
             person("Tuomas","Aakala",role = c("aut"), email="tuomas.aakala@helsinki.fi"),
