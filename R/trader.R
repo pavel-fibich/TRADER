@@ -959,10 +959,15 @@ boundaryGet<-function(data,prior=NULL,change=NULL,m1=10,m2=10,segment=0.5,segmen
 #  no<-no1+no2
   
   #the first value in each list is the upper boundary of each prior growth segment.
-  segment_list <-as.list( 
-    c( seq(segment2,segment2*no1,by=segment2) ,seq(1+segment,segment*no2,by=segment) )
+  if ((segment*no2) < (1+segment)) {
+    segment_list <-as.list( 
+      c( seq(segment2,segment2*no1,by=segment2) )
     )
-  
+  } else{
+    segment_list <-as.list( 
+      c( seq(segment2,segment2*no1,by=segment2) ,seq(1+segment,segment*no2,by=segment) )
+      )
+  }
   no<-length(segment_list)
   
   #arrange percent growth change values into corresponding prior growth segments
@@ -971,7 +976,7 @@ boundaryGet<-function(data,prior=NULL,change=NULL,m1=10,m2=10,segment=0.5,segmen
     segment_list[[n]]<- append(segment_list[[n]], all.change[doon][(all.prior[doon] < segment_list[[n]][1]) & 
                         (all.prior[doon] >= segment_list[[n]][1] - segment2)])
   }
-  for(n in (no1+1):no) {    
+  if (no>no1) for(n in (no1+1):no) {    
     doon<- !is.na(all.prior)
     segment_list[[n]]<- append(segment_list[[n]], all.change[doon][(all.prior[doon] < segment_list[[n]][1]) & 
                                                                      (all.prior[doon] >= segment_list[[n]][1] - segment)])
