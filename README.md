@@ -18,4 +18,4 @@ GITHUB
  
  eg.
 
- >install.packages("TRADER_1.2-4.tar.gz",repos=NULL,type="source")
+ >install.packages("TRADER_1.2-6.tar.gz",repos=NULL,type="source")

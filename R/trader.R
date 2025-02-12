@@ -857,9 +857,9 @@ reduceByLB<-function(releases, above, buffer=2, type=1, length=2,val=NULL){
     if (length(temp)>0) for( r in 1:length(temp) ){
       tempOne<-temp[r]+1 # peak of release
       iiu<-tempOne 
-      while( (!is.na(above[iiu+1 ,i])) & (iiu < nrow(above)) ) iiu<-iiu+1
+      while( (iiu < nrow(above)) && (!is.na(above[iiu+1 ,i])) ) iiu<-iiu+1
       iil<-tempOne
-      while( (!is.na(above[iil-1 ,i])) & (iil > 1) ) iil<-iil-1
+      while( (iil > 1) && (!is.na(above[iil-1 ,i])) ) iil<-iil-1
       # continuous non NA value between iil - iiu
       if ( (iiu-iil+1) >= length ){
         temp2 <- c(temp2,temp[r])
